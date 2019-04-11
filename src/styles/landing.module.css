@@ -1,0 +1,128 @@
+.heroContainer {
+  grid-area: heroContainer;
+  /* margin-top: -6rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; 
+  width: 100%;
+  min-height: 80vh;
+  position: relative;
+  margin: 0;
+  perspective: 1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  /* no-repeat center center fixed cover */
+  /* max-height: 92vh; */
+}
+
+.heroImg {
+  grid-area: heroImage;
+  width: 100%;
+  max-height: 92vh;
+  object-fit: cover;
+  margin: 0;
+}
+
+.heroCTA {
+  grid-area: heroCall;
+  max-height: 50%;
+  background: 
+    linear-gradient(
+      to bottom,
+      #00000000,
+      #00000099
+    );
+  background-color: #00000080;
+  color: #FAFAFA;
+  width: 100%;
+  position: absolute; 
+  align-self:flex-end;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  padding: 1rem;
+  margin: 0;
+  box-Sizing: border-box;
+  font-size: 1rem;
+}
+
+.heroCTA::before {
+  content: '';
+  filter: blur(2px);
+}
+
+.heroHeading {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin: 0.5rem 0;
+}
+
+.heroSubheading {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.item-c {
+  grid-area: whyImg;
+}
+
+.item-d {
+  grid-area: whyText;
+}
+
+.item-c {
+  grid-area: whatImg;
+}
+
+.item-d {
+  grid-area: whatText;
+}
+
+.container {
+  margin: 0;
+  background-color: lightseagreen;
+  display: grid;
+  grid-template-columns: calc(100% - 16px);
+  grid-template-rows: repeat(6, minmax(400px , calc(80vh - 16px)));
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  place-items: center;
+  grid-template-areas: 
+    "heroImage" 
+    "heroCall"
+    "whyText" 
+    "whyImg"
+    "whatImg"
+    " whatText";
+}
+
+@media screen and (min-width: 1023px) {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(400px , calc(50% - 16px)));
+    grid-template-rows: repeat(3, minmax(400px , calc(50vh - 16px)));
+    grid-template-areas: 
+      "heroImage heroCall"
+      "whyText whyImg"
+      "whatImg whatText";
+  }
+  .heroHeading {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    /* margin: 0; */
+  }
+  
+  .heroSubheading {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    /* margin: 0; */
+  }
+
+}

@@ -1,0 +1,20 @@
+.heroContainer {
+  grid-area: heroContainer;
+  /* margin-top: -6rem; */
+  width: 100%;
+  position: relative;
+  margin: 0;
+  /* max-height: 92vh; */
+}
+
+.heroImg {
+  grid-area: heroImage;
+  width: 100%;
+  max-height: 80vh;
+  object-fit: cover;
+  margin: 0;
+}
+
+@media screen and (min-width: 1023px) {
+
+}
