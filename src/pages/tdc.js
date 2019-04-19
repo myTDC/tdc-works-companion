@@ -10,7 +10,7 @@ const tdc = props => {
 }
 
 tdc.propTypes = {
-
+  uri: PropTypes.string,
 }
 
 export default tdc

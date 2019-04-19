@@ -1,29 +1,53 @@
 // import firebase from 'firebase';
 
-import firebase from "firebase/app";
-import "firebase/auth";
-import "firebase/database";
-import "firebase/firestore";
-import "firebase/storage";
-import "firebase/firebase-messaging";
+// import firebase from "firebase/app";
+// import "firebase/auth";
+// // import "firebase/database";
+// import "firebase/firestore";
+// import "firebase/storage";
+// import "firebase/firebase-messaging";
+
+import firebase from "@firebase/app"
+import "@firebase/auth"
+import "@firebase/firestore" // import "firebase/database";
+import "@firebase/storage"
+import "@firebase/messaging"
 
 const firebaseConfig = {
-	apiKey: "AIzaSyC_lMNT5r_-4YzeYWGa9WUwP23-o7Y3UsQ",
-	authDomain: "tdc-works.firebaseapp.com",
-	databaseURL: "https://tdc-works.firebaseio.com",
-	projectId: "tdc-works",
-	storageBucket: "tdc-works.appspot.com",
-	messagingSenderId: "86414527098"
+  apiKey: "AIzaSyAd1jN8Prw4bUDCMvFN0QGZy0WRqEq8K1k",
+  authDomain: "tdc-workshsops.firebaseapp.com",
+  databaseURL: "https://tdc-workshsops.firebaseio.com",
+  projectId: "tdc-workshsops",
+  storageBucket: "tdc-workshsops.appspot.com",
+  messagingSenderId: "115568196506",
 }
 
 const app = firebase.initializeApp(firebaseConfig)
 
+/* #### User Authentication Related Code #### */
 export const getAuthRef = () => {
-	return app.auth()
+  return app.auth()
 }
 
 // export const authRef = app.auth()
 export const gProvider = new firebase.auth.GoogleAuthProvider()
+
+/** Function to get the detials of the user that's currently logged in*/
+export const getUser = () => {
+  return firebase.auth().currentUser
+}
+
+/* ---- End of User Authentication Related Code ---- */
+
+/* #### FireStore DB Related Code #### */
+const db = firebase.firestore()
+
+export const testRef = db.doc("test/test01")
+export const worksV1DocRef = db.doc("workshops/v1")
+export const usersColRef = db.collection("users")
+export const feedbackColRef = db.collection("feedback")
+
+/* ---- End of FireStore DB Related Code ---- */
 
 export default app
 // let firebaseCache = firebase.initializeApp(firebaseConfig);
@@ -83,7 +107,6 @@ export default app
 /* ################ End of File and Default Export ################ */
 // export default firebase;
 // export default (firebaseCache || firebase);
-
 
 /*
 	In firestore things start with a collection.

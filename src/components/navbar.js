@@ -1,60 +1,146 @@
-import React from "react"
+import React, { PureComponent } from 'react'
 import PropTypes from "prop-types"
 import { Link } from "@reach/router"
+import { connect } from 'react-redux'
+
+import signon from "../redux/actions/auth"
 
 import styles from "../styles/nav.module.css"
 import logo from "../res/imgs/tdc-reach-full-ondark.svg"
 import { ReactComponent as Avatar } from "../res/imgs/user-outline-optim.svg"
 
-const Navbar = ({ user }) => {
-  //TODO: Make the logo fit inside a link component
-  return (
-    <nav className={styles.container}>
-      <header className={styles.head}>
+export class Navbar extends PureComponent {
+  static propTypes = {
+    user: PropTypes.string,
+  }
+
+  static defaultProps = {
+    user: null,
+  }
+
+  render() {
+    const { isMobile } = this.props
+    return (
+      <header className={styles.container}>
+      <aside className={styles.head}>
         <img
           src={logo}
           className={styles.logo}
           alt="TDC Reach logo for Dark Backgrounds"
         />
-        <Auth />
-      </header>
-      <aside className={styles.links}>
-        <Link to="/">Home</Link>
-        <Link to="dashboard">Dashboard</Link>{" "}
-        <Link to="invoices/123">Invoice 123</Link>{" "}
-        <Link to="invoices/abc">Invoice ABC</Link>
+        {isMobile && this.renderAuth()}
       </aside>
-    </nav>
-  )
+      <nav className={styles.links}>
+        <Link to="/">Home</Link>
+        <Link to="works">Works</Link>{" "}
+        <Link to="tdc">TDC</Link>{" "}
+        <Link to="register">Register</Link>
+        {!isMobile && this.renderAuth()}
+      </nav>
+    </header>
+    )
+  }
+
+  renderAuth() {
+    const { user, join } = this.props
+    return (
+      user ? (
+        <div className={styles.authContainer} onClick={join} >
+          <Avatar
+            className={styles.avatar}
+            alt="TDC Reach logo for Dark Backgrounds"
+          />
+          <span>log out</span>
+        </div>
+      ) : (
+        <div className={styles.authContainer} onClick={join} >
+          <Avatar
+            className={styles.avatar}
+            alt="TDC Reach logo for Dark Backgrounds"
+          />
+          <span>login</span>
+        </div>
+      )
+    )
+  }
 }
 
-Navbar.propTypes = {
-  user: PropTypes.string,
-}
+const mapStateToProps = (state) => ({
+  
+})
 
-Navbar.defaultProps = {
-  user: null,
-}
+const mapDispatchToProps = dispatch => ({
+  join: () => dispatch(signon())
+})
 
-export default Navbar
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
 
-const Auth = ({ user }) =>
-  user ? (
-    <div>Log Out</div>
-  ) : (
-    <div className={styles.authContainer}>
-      <Avatar
-        className={styles.avatar}
-        alt="TDC Reach logo for Dark Backgrounds"
-      />
-      <span>login</span>
-    </div>
-  )
+//######## Functional Sour Soup ########
+// const Navbar = ({isMobile, user, join}) => {
+//   //TODO: Make the logo fit inside a link component
+//   return (
+//     <header className={styles.container}>
+//       <aside className={styles.head}>
+//         <img
+//           src={logo}
+//           className={styles.logo}
+//           alt="TDC Reach logo for Dark Backgrounds"
+//         />
+//         {isMobile && <Auth funclick={join} />}
+//       </aside>
+//       <nav className={styles.links}>
+//         <Link to="/">Home</Link>
+//         <Link to="works">Works</Link>{" "}
+//         <Link to="tdc">TDC</Link>{" "}
+//         <Link to="register">Register</Link>
+//         {!isMobile && <Auth funclick={join} />}
+//       </nav>
+//     </header>
+//   )
+// }
 
-Auth.propTypes = {
-  user: PropTypes.string,
-}
+// Navbar.propTypes = {
+//   user: PropTypes.string,
+// }
 
-Auth.defaultProps = {
-  user: null,
-}
+// Navbar.defaultProps = {
+//   user: null,
+// }
+
+// const mapStateToProps = (state) => ({
+  
+// })
+
+// const mapDispatchToProps = dispatch => ({ 
+//   join: () => dispatch(signon()) 
+// })
+
+
+// export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
+
+// const Auth = ({ user, funclick }) =>
+//   user ? (
+//     <div className={styles.authContainer} onClick={funclick} >
+//       <Avatar
+//         className={styles.avatar}
+//         alt="TDC Reach logo for Dark Backgrounds"
+//       />
+//       <span>log out</span>
+//     </div>
+//   ) : (
+//     <div className={styles.authContainer} onClick={funclick} >
+//       <Avatar
+//         className={styles.avatar}
+//         alt="TDC Reach logo for Dark Backgrounds"
+//       />
+//       <span>login</span>
+//     </div>
+//   )
+
+// Auth.propTypes = {
+//   user: PropTypes.string,
+// }
+
+// Auth.defaultProps = {
+//   user: null,
+// }
