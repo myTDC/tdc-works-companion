@@ -1,11 +1,12 @@
 .App {
-  /* background-color: #162432; */
-  background-color: darkslateblue;
-  color: #fafafa;
+  background-color: #162432;
+  /* background-color: darkslateblue; */
+  color: whitesmoke;
   min-height: 100vh;
   height: 100%;
-  max-width: 100%;
+  /* max-width: 100%; */
   text-align: center;
+  box-sizing: border-box;
 }
 
 .active {

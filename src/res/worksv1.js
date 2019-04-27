@@ -1,3 +1,6 @@
+// import { generate } from 'shortid';
+// id: generate()
+
 export default {
   wv1_001: {
     id: "wv1_001",

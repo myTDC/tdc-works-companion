@@ -1,4 +1,6 @@
-import { configureStore, getDefaultMiddleware } from 'redux-starter-kit'
+import { configureStore, 
+  getDefaultMiddleware 
+} from 'redux-starter-kit'
 import logger from 'redux-logger'
 import auth from './reducers/auth'
 import admin from './reducers/admin'
@@ -18,7 +20,7 @@ const store = configureStore({
 
 export const loadState = () => {
   try{
-      const serializedState = localStorage.getItem('storeState');
+      const serializedState = localStorage.getItem('storedState');
       if(serializedState === null){
           return undefined;
       }
@@ -33,7 +35,7 @@ export const loadState = () => {
 export const setState = (state) => {
   try {
       const serializedState = JSON.stringify(state);
-      localStorage.setItem('storeState', serializedState);
+      localStorage.setItem('storedState', serializedState);
   } catch (err) {
       console.log('[Red/Index] -> [setState()] Error Setting Serilaized State');
   }

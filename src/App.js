@@ -15,6 +15,8 @@ import Registration from "./pages/registration"
 import Tdc from "./pages/tdc"
 import Page404 from "./pages/404"
 import Navbar from "./components/navbar"
+import Toolkit from "./pages/toolkit"
+
 
 // const Landing = lazy(() => import("./pages/landing"));
 
@@ -76,6 +78,7 @@ class App extends Component {
           <Registration path="/register" />
           <Registration path="/registration" />
           <Tdc path="/tdc" />
+          <Toolkit path="/toolkit/*" width={this.state.windWidth} />
           <Page404 default />
         </Router>
       </div>

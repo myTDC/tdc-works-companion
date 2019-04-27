@@ -44,7 +44,7 @@ class Landing extends Component {
       <>
         <div
           className={styles.heroContainer}
-          style={{ backgroundImage: `${this.props.heroSrcInternal}` }}
+          style={{ backgroundImage: `${this.props.heroSrcInternal}`}}
         >
           {/* */}
           <div style={{ backgroundColor: `#16243290` }}>

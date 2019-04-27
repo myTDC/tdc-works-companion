@@ -61,26 +61,27 @@ const authWithGoogle = () => {
       .signInWithPopup(gProvider)
       .then(result => {
         // console.log("SingedIn! ; Response is: ", result) // console.log("SingedIn! ; User Info: ", result.user)
-        const user = {
-          // The signed-in user info.\
+        const user = {  // The signed-in user info.\
           locale: result.additionalUserInfo.profile.locale,
           profileId: result.additionalUserInfo.profile.id,
           uid: result.user.uid,
-          name: result.user.displayName,
-          givenName: result.additionalUserInfo.profile.given_name,
-          familyName: result.additionalUserInfo.profile.family_name,
-          isNew: result.additionalUserInfo.isNewUser,
+          nameFull: result.user.displayName,
+          nameGiven: result.additionalUserInfo.profile.given_name,
+          nameFamily: result.additionalUserInfo.profile.family_name,
           email: result.user.email,
-          isVerified: result.user.emailVerified,
-          isAnonymous: result.user.isAnonymous,
           phoneNo: result.user.phoneNumber,
           photoUrl: result.user.photoURL,
           emailVerified: result.user.emailVerified,
+        }
+        const userSessionExtras = {
+          uid: result.user.uid,
+          isAnonymous: result.user.isAnonymous,
+          isNew: result.additionalUserInfo.isNewUser,
           refToken: result.user.refreshToken,
           token: result.credential.accessToken, // This gives you a Google Access Token. You can use it to access the Google API.
         }
         console.log("SingedIn!; User is: ", user) //const user = getAuthRef().currentUser
-        dispatch(authenticatedUser({ newUser: user })) //dispatch(authSuccessful(user))
+        dispatch(authenticatedUser({ newUser: user, sessionStuff: userSessionExtras })) //dispatch(authSuccessful(user))
         dispatch(getUserData(user)) //check user exists? getData:createUser
       })
       .catch(error => {
