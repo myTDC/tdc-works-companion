@@ -1,7 +1,8 @@
 .App {
-  background-color: #162432;
-  /* background-color: darkslateblue; */
-  color: whitesmoke;
+  /* background-color: #162432; */
+  background-color: #fefefe;
+  /* background-color: crimson; */
+  color: #010203;
   min-height: 100vh;
   height: 100%;
   /* max-width: 100%; */

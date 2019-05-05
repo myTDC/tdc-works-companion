@@ -6,15 +6,18 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
-	background-color: #162432;
-	z-index: 10;
+  /* background-color: #162432; */
+  background-color: #FFFFFF;
+	z-index: 100;
 	/* position: fixed;
 	top: 0;
 	left: 0; */
-	color: white;
+  /* color: white; */
+  color: #010203;
 	/* border: 1px solid salmon; */
 	font-family: Poppins;
-	letter-spacing: 200; 
+  letter-spacing: 200;
+  box-shadow: 0 1px 4px 2px #f0f0f0;
 }
 
 .head {
@@ -40,14 +43,14 @@
   width: 16%;
   height: 8vh;
   cursor: pointer;
-  color: #16df64;
+  color: #536DFE;
   border: null;
   border-left: .8px solid #222;
 }
 
 .avatar g {
   height: 8vh;
-  fill: #16df64;
+  fill: #536DFE;
 }
 
 /* .avatar g path {
@@ -71,7 +74,6 @@
   justify-content: space-evenly;
   letter-spacing: .5px;
   align-items: center;
-  color: white;
   font-variant-caps: all-petite-caps;
 }
 

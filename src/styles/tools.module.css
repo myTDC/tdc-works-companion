@@ -6,23 +6,25 @@
 .toolsNav {
   width: 100%;
   min-width: 320px;
-  height: 6vh;
+  height: 5vh;
   display: flex;
+  align-content: center;
   justify-content: space-between;
-  padding: 16px;
+  padding: 12px;
   background-position: center;
   background-color: whitesmoke;
   color: #162432;
-
   box-sizing: border-box;
+  /* border-radius: 0 0 1rem 1rem; */
   box-shadow: 0 2px 1px 2px #22222240;
 }
 
 .linksContainer {
   display: flex;
-  width: 220px;
+  width: 280px;
   justify-content: space-around;
-  font-variant-caps: all-petite-caps;
+  font-size: 1rem;
+  font-variant-caps: all-small-caps;
   letter-spacing: .4px;
 }
 

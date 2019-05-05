@@ -1,11 +1,11 @@
 import React from "react"
 // import { Router, Link } from "@reach/router"
-import { Formik, Field, FastField, Form } from "formik"
+import { Formik, Field, FastField, Form, getIn } from "formik"
 import * as yup from "yup"
 
 // import "../../styles/valuation.css"
 import styles from "../../styles/valuation.module.css"
-import heroval from "../../res/imgs/toolkit-eval-optm.svg"
+import heroval from "../../res/imgs/toolkit-eval-optim.svg"
 
 export const InfoBerkus = props => {
   return (
@@ -31,14 +31,28 @@ export const InfoBerkus = props => {
         $20M (in the fifth year in business) to “provide some opportunity for
         the investment to achieve a ten-times increase in value over its life.”
       </p>
-      <h6>
+      <h4>
         find out more @{" "}
         <a href="https://berkonomics.com/?p=1214">Berkonomics</a>
-      </h6>
+      </h4>
       <hr />
     </div>
   )
 }
+
+const LightInput = ({ field, form, ...props }) => {
+  const errorMessage = getIn(form.error, field.name);
+  return (
+    <>
+      {console.log("Props Are as: ", props, "FieldProps Are as: ", field)}
+      {console.log("FormProps Are as: ", form)}
+      <input {...field} {...props} />
+      {form.error && form.touched && (
+        <div>{errorMessage}</div>
+      )}
+    </>
+  );
+};
 
 const calculateValuation = values => {
   // console.log("Calculating on:", values)
@@ -62,7 +76,7 @@ const calculateFunding = values => {
   return values
 }
 
-const validationschema = yup.object().shape({
+const validationSchema = yup.object().shape({
   name: yup
     .string()
     .max(40)
@@ -76,7 +90,7 @@ const validationschema = yup.object().shape({
     .positive()
     .integer()
     .max(12)
-    .required("We really do the age of your startup"),
+    .required("We really do need the age of your startup"),
   contac_no: yup
     .string()
     .required(
@@ -89,15 +103,20 @@ const validationschema = yup.object().shape({
   revenue_y5: 0,
   revenue_total: 0,
   valutaion: 0,
-  percentage_equity: 0,
+  percentage_equity: yup
+  .number()
+  .required()
+  .positive()
+  .integer()
+  .max(50),
   money_for_equity: 0,
   //yup.object().shape()
 })
 
 const valuation = {
-  eval_model: "",
+  eval_model: "berkus",
   industry: "",
-  age_of_startup: 0,
+  age_of_startup: "",
   contac_no: "",
   currency: "",
   revenue_y1: "",
@@ -105,10 +124,10 @@ const valuation = {
   revenue_y3: "",
   revenue_y4: "",
   revenue_y5: "",
-  revenue_total: 0,
-  valuation: 0,
+  revenue_total: "",
+  valuation: "",
   percentage_equity: "",
-  money_for_equity: 0,
+  money_for_equity: "",
 }
 
 const eval_model_options = [
@@ -130,7 +149,8 @@ export const EvalFormBerkus = props => (
       console.log("Form has values:", values)
       actions.setSubmitting(false)
     }}
-    render={({ values, errors, status, touched, isSubmitting }) => (
+    validationScheme={validationSchema}>
+    {({ values, errors, status, touched, isSubmitting }) => (
       <Form className={styles.form}>
         <div className={styles.formSection}>
           <h1>Enter your projected yearly revenue (in Thousands)</h1>
@@ -150,64 +170,58 @@ export const EvalFormBerkus = props => (
           </aside>
           <h3>Projected Revenue in the 1st Year? </h3>
           <Field
-            type="text"
+            type="number"
             name="revenue_y1"
             placeholder="for example: 200"
             className={styles.formfield}
+            component={LightInput}
           />
-          {errors.revenue_y1 && touched.revenue_y1 && (
-            <div>{errors.revenue_y1}</div>
-          )}
+          {/*errors.revenue_y1 && touched.revenue_y1 && (<div>{errors.revenue_y1}</div>)*/}
           <h3>Projected Revenue in the 2nd Year?</h3>
           <Field
-            type="text"
+            type="number"
             name="revenue_y2"
             placeholder="for example: 500"
             className={styles.formfield}
+            component={LightInput}
           />
-          {errors.revenue_y2 && touched.revenue_y2 && (
-            <div>{errors.revenue_y2}</div>
-          )}
+          {/*errors.revenue_y1 && touched.revenue_y1 && (<div>{errors.revenue_y1}</div>)*/}
           <h3>Projected Revenue in the 3rd Year?</h3>
           <Field
-            type="text"
+            type="number"
             name="revenue_y3"
             placeholder="for example: 1200"
             className={styles.formfield}
+            component={LightInput}
           />
-          {errors.revenue_y3 && touched.revenue_y3 && (
-            <div>{errors.revenue_y3}</div>
-          )}
+          {/*errors.revenue_y1 && touched.revenue_y1 && (<div>{errors.revenue_y1}</div>)*/}
           <h3>Projected Revenue in the 4th Year?</h3>
           <Field
-            type="text"
+            type="number"
             name="revenue_y4"
             placeholder="for example: 2100"
             className={styles.formfield}
+            component={LightInput}
           />
-          {errors.revenue_y4 && touched.revenue_y4 && (
-            <div>{errors.revenue_y4}</div>
-          )}
+          {/*errors.revenue_y1 && touched.revenue_y1 && (<div>{errors.revenue_y1}</div>)*/}
           <h3>Projected Revenue in the 5th Year?</h3>
           <FastField
-            type="text"
+            type="number"
             name="revenue_y5"
             placeholder="for example: 3200"
             className={styles.formfield}
+            component={LightInput}
           />
-          {errors.revenue_y5 && touched.revenue_y5 && (
-            <div>{errors.revenue_y5}</div>
-          )}
+          {/*errors.revenue_y1 && touched.revenue_y1 && (<div>{errors.revenue_y1}</div>)*/}
           <h3>Equity you're willing to give up? (x%)</h3>
           <FastField
-            type="text"
+            type="number"
             name="percentage_equity"
             placeholder="for example: 15"
             className={styles.formfield}
+            component={LightInput}
           />
-          {errors.percentage_equity && touched.percentage_equity && (
-            <div>{errors.percentage_equity}</div>
-          )}
+          {/*errors.revenue_y1 && touched.revenue_y1 && (<div>{errors.revenue_y1}</div>)*/}
         </div>
         <div className={styles.formSection}>
           <br />
@@ -219,42 +233,44 @@ export const EvalFormBerkus = props => (
         <div className={styles.formSection}>
           <h2>Your Valuation is:</h2>
           <Field
-            type="text"
-            name="revenue_y5"
+            type="textarea"
+            name="valutaion"
             className={styles.resultantField}
             disabled={true}
             placeholder="Uh-Oh! Seems like you need to input revenue projections."
             value={
               values.revenue_y5
                 ? calculateValuation(values).valuation + " Thousand USD"
-                : null
+                : ""
             }
+            component={LightInput}
           />
           <br />
           <h2>For {values.percentage_equity}% equity you can raise upto: </h2>
           <Field
-            type="text"
-            name="revenue_y5"
+            type="textarea"
+            name="money_for_equity"
             className={styles.resultantField2}
             disabled={true}
             placeholder="You also need to input the equity you can give."
             value={
               values.percentage_equity
                 ? calculateFunding(values).money_for_equity + " Thousand USD"
-                : null
+                : ""
             }
+            component={LightInput}
           />
         </div>
       </Form>
     )}
-  />
+  </Formik>
 )
 
 const Valuations = (props) => {
   return (
     <div className={styles.valuationContainer}>
       <div className={styles.heroContainer}>
-      <img src={heroval} alt="homepage illustration for TDC toolkit" className={styles.hero} style={{ width: `${props.width}` + `px` }} />
+      <img src={heroval} alt="homepage illustration for TDC toolkit" className={styles.hero} style={{ width: "100%", minWidth: `${props.width}px` }} />
         <hr />
       </div>
       <div className={styles.formContainer}>
@@ -267,25 +283,24 @@ const Valuations = (props) => {
 }
 
 export default Valuations
-
-{
-  /*
-          <div className={styles.formSection}>
-          <div className={styles.formRow}>
-            <h3>Select your model</h3>
-            <Field name="eval_model" component="select">
-              {eval_model_options.map(option => (
-                <option
-                  key={`eval_model-${option.id}`}
-                  default={option.default || false}
-                  value={option.id}
-                >
-                  {option.display}
-                </option>
-              ))}
-            </Field>
-          </div>
-          {!(values.eval_model === "berkus") ? null : <InfoBerkus />}
-        </div>
-   */
-}
+/*
+  {
+    <div className={styles.formSection}>
+    <div className={styles.formRow}>
+      <h3>Select your model</h3>
+      <Field name="eval_model" component="select">
+        {eval_model_options.map(option => (
+          <option
+            key={`eval_model-${option.id}`}
+            default={option.default || false}
+            value={option.id}
+          >
+            {option.display}
+          </option>
+        ))}
+      </Field>
+    </div>
+    {!(values.eval_model === "berkus") ? null : <InfoBerkus />}
+    </div> 
+  }
+*/

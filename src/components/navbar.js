@@ -6,7 +6,9 @@ import { connect } from 'react-redux'
 import signon from "../redux/actions/auth"
 
 import styles from "../styles/nav.module.css"
-import logo from "../res/imgs/tdc-educate-full-ondark.svg"
+// import logoOd from "../res/imgs/tdc-educate-full-ondark.svg"
+import logoOl from "../res/imgs/tdc-educate-full-onlight.svg"
+
 import { ReactComponent as Avatar } from "../res/imgs/user-outline-optim.svg"
 
 export class Navbar extends PureComponent {
@@ -24,7 +26,7 @@ export class Navbar extends PureComponent {
       <header className={styles.container}>
       <aside className={styles.head}>
         <img
-          src={logo}
+          src={logoOl}
           className={styles.logo}
           alt="TDC Reach logo for Dark Backgrounds"
         />
@@ -32,10 +34,11 @@ export class Navbar extends PureComponent {
       </aside>
       <nav className={styles.links}>
         <Link to="/">Home</Link>
-        <Link to="works">Works</Link>{" "}
+        <Link to="works">Learn</Link>{" "}
+        <Link to="register">Build</Link>{" "}
+        <Link to="register">Grow</Link>{" "}
+        <Link to="toolkit">ToolKit</Link>{" "}
         <Link to="tdc">TDC</Link>{" "}
-        <Link to="toolkit">Tools</Link>{" "}
-        <Link to="register">Register</Link>
         {!isMobile && this.renderAuth()}
       </nav>
     </header>
