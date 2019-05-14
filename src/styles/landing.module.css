@@ -1,28 +1,37 @@
 .homeFirst {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 8px auto;
   font-family: "Segoe UI";
   background-color: white;
   text-align: center;
 }
 
+.homeFirst img {
+  transition: transform .5s;
+}
+
+.homeFirst img:hover {
+  /* transform: scale(1.05); */
+}
+
+
 .homeFirst h1 {
   font-size: 3rem;
-  line-height: 4rem;
+  /* line-height: 4rem; */
 }
 
 .homeFirst h2 {
   font-size: 2.6rem;
-  line-height: 3.2rem;
+  /* line-height: 3.2rem; */
 }
 
 .homeFirst h3 {
   font-size: 2rem;
-  line-height: 2.8rem;
+  /* line-height: 2.8rem; */
 }
 
-.homeFirst h4 {
+/* .homeFirst h4 {
   font-size: 2rem;
   line-height: 2.8rem;
 }
@@ -35,6 +44,11 @@
 .homeFirst h6 {
   font-size: 1rem;
   line-height: 1.6rem;
+} */
+
+.homeFirst p {
+  /* font-size: 1.2rem; */
+  /* font-family: Poppins , 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif */
 }
 
 .homeFirst button {
@@ -212,12 +226,13 @@
   margin: 16px;
 }
 
-.serviceCard:hover {
+.serviceCard img:hover {
   animation-name: weebit_wiggle;
   animation-duration: .55s; 
   animation-timing-function: ease;
   animation-delay: 02ms;
   animation-iteration-count: 1;
+  transform: scale(1.05);
 }
 
 /* .serviceCard:hover::before {
@@ -233,7 +248,6 @@
 .homeBplan {
   width: 100%;
   display: flex;
-  flex-direction: row;
   padding: 4% 0;
   flex-wrap: wrap
 }
@@ -263,7 +277,7 @@
 
 .homeFooter {
   display: flex;
-  padding: 32px 32px;
+  padding: 4vh 4vh;
   justify-content: space-between;
   align-items: flex-start;
   background-color: white;
@@ -307,6 +321,10 @@
     width: 50%;
   }
 
+  .homeHeroImg:hover {
+    transform: scale(1.02);
+  }
+
   .homeHeroTextActionItem {
     width: 42%;
     display: flex;
@@ -314,12 +332,26 @@
     justify-content: space-between;
   }
 
+  .homeBplan {
+    min-height: 600px;
+  }
+
   .homeBplanImg {
     width: 50%;
+    min-height: 600px;
+  }
+
+  .homeBplanImg:hover {
+    transform: scale(1.05);
   }
   
   .homeBplanText {
     width: 50%;
+  }
+
+  .homeFooter {
+    padding: 32px 32px;
+    text-align: start;
   }
 
   .homeFooterGroup {
@@ -341,6 +373,7 @@
 .btn--shockwave.is-active::before {
   animation: shockwave 1s .5s ease-out infinite;
 }
+
 
 @keyframes shockwaveJump {
   0% {
@@ -389,7 +422,7 @@
   }
   100% {
     transform: scale(1.05);
-    box-shadow: 0 4px 20px rgba(0,0,0,.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,.1);
   }
 }
 
@@ -439,13 +472,13 @@
     transform: rotate(-1deg);
   }
   33% {
-    transform: rotate(2deg);
+    transform: rotate(2deg) scale(1.01);
   }
   66% {
-    transform: rotate(-3deg);
+    transform: rotate(-3deg) scale(1.03);
   }
   100% {
-    transform: rotate(0);
+    transform: rotate(0) scale(1.05) ;
   }
 }
 

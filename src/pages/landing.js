@@ -7,7 +7,7 @@ import { Formik, Form, Field } from "formik";
 import {
 	getDataWorksV1,
 	addDataWorksV1,
-	testRead
+	// testRead
 } from "../redux/actions/admin";
 
 //Styles
@@ -24,7 +24,7 @@ import investorCard from "../res/imgs/landing/meet-investors-optim.svg";
 import nurture from "../res/imgs/landing/nurture-optim.svg";
 
 import quickActIcon from "../res/icons/round-search.svg";
-import { ReactComponent as QuickActIcon } from "../res/icons/round-search-optim.svg";
+// import { ReactComponent as QuickActIcon } from "../res/icons/round-search-optim.svg";
 
 const services = [
 	{
@@ -94,7 +94,7 @@ ServiceCard.propTypes = {
 	data: PropTypes.shape({
 		id: PropTypes.string,
 		label: PropTypes.string,
-		pic: PropTypes.func,
+		pic: PropTypes.string,
 		desc: PropTypes.string,
 		linkLabel: PropTypes.string,
 		link: PropTypes.string
@@ -299,11 +299,12 @@ class Landing extends Component {
 							<div className={styles.homeBplanText}>
 								<div>
 									<h3>Education is Free</h3>
-									Education is a fundamental right. And we believe in keeping it
-									free for students.
+									Education is a fundamental right. Quality Education is more so.
+									<br />
+									And we believe in keeping quality entrepreneurial education	free for everyone.
 									<br />
 									<br />
-									you don't pay us anything till you start-up.
+									In short, you don't pay us anything for education till you start-up.
 									<br />
 									<span
 										className={styles.homeOutLink}
@@ -315,12 +316,14 @@ class Landing extends Component {
 								</div>
 								<div>
 									<h3>We earn after you do</h3>
-									After you start-up, it's up to you. Insights, Analytics,
-									Investments, Sales Support, Team Building. We do our best to
-									tend to the needs of your startup.
+									Once you start-up, the choice is yours. 
+									<br />
+									We offer services and training 
+									in Insights, Analytics, Investments, Sales, Hiring and more.
+									All to tend to the needs of your startup.
 									<br />
 									<br />
-									but it comes at a price. Shares before cash though.
+									But we only offer these to partner startups. 
 									<br />
 									<span
 										className={styles.homeOutLink}

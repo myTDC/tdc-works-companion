@@ -50,6 +50,7 @@
 .fore {
   width: 100%;
   min-width: 320px;
+  min-height: 80vh;
   margin: 0 auto;
   background-color: whitesmoke;
   color: darkslategray;

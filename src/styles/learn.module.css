@@ -1,0 +1,22 @@
+.learnLayout {
+
+}
+
+.learnHero {
+
+}
+
+.learnHeroText {
+  
+}
+
+.learnHeroImg {
+  
+}
+
+.learnForm {
+  width: 480px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}

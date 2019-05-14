@@ -10,6 +10,10 @@
   box-sizing: border-box;
 }
 
+.AppContainer {
+  margin-top: 8px;
+}
+
 .active {
   color:#2d65ff;
 }
