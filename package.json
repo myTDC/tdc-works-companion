@@ -1,48 +1,49 @@
 {
-  "name": "tdc-works-pwa",
-  "description": "Companion App for TDC Works",
-  "author": "Aditya Mishra <https://github.com/iadityam>",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@firebase/app": "^0.4.1",
-    "@firebase/auth": "^0.11.2",
-    "@firebase/firestore": "^1.3.1",
-    "@firebase/messaging": "^0.3.20",
-    "@firebase/storage": "^0.2.16",
-    "@reach/router": "^1.2.1",
-    "@reach/tooltip": "^0.2.0",
-    "@reach/window-size": "^0.1.4",
-    "formik": "^1.5.4",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-helmet": "^5.2.1",
-    "react-redux": "^7.0.3",
-    "react-scripts": "3.0.1",
-    "redux": "^4.0.1",
-    "redux-starter-kit": "^0.5.1",
-    "redux-thunk": "^2.3.0",
-    "shortid": "^2.2.14",
-    "yup": "^0.27.0"
-  },
-  "devDependencies": {
-    "prettier": "^1.17.0",
-    "react-axe": "^3.1.0",
-    "redux-logger": "^3.0.6"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+	"name": "tdc-works-pwa",
+	"description": "Companion App for TDC Works",
+	"author": "Aditya Mishra <https://github.com/iadityam>",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@firebase/app": "^0.4.3",
+		"@firebase/auth": "^0.11.2",
+		"@firebase/firestore": "^1.3.3",
+		"@firebase/messaging": "^0.3.22",
+		"@firebase/storage": "^0.2.16",
+		"@reach/router": "^1.2.1",
+		"@reach/tooltip": "^0.2.0",
+		"@reach/window-size": "^0.1.4",
+		"formik": "^1.5.7",
+		"react": "^16.8.6",
+		"react-dom": "^16.8.6",
+		"react-helmet": "^5.2.1",
+		"react-redux": "^7.0.3",
+		"react-scripts": "3.0.1",
+		"redux": "^4.0.1",
+		"redux-starter-kit": "^0.5.1",
+		"redux-thunk": "^2.3.0",
+		"shortid": "^2.2.14",
+		"yup": "^0.27.0"
+	},
+	"devDependencies": {
+		"react-axe": "^3.1.0",
+		"redux-logger": "^3.0.6"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
+		"fix-code": "prettier-eslint --write 'src/**/*.{js,jsx}' ",
+		"fix-styles": "prettier-stylelint --write 'src/**/*.{css,scss}' "
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": [
+		">0.2%",
+		"not dead",
+		"not ie <= 11",
+		"not op_mini all"
+	]
 }

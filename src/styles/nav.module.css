@@ -1,30 +1,36 @@
+:root {
+  --theme-light-text-color-main: #010203;
+  --navbar-height: 16vh;
+}
+
 .container {
-  min-width: 100px;
-	height: 16vh;
+  min-width: 320px;
+	height: var(--navbar-height);
 	width: 100%; 
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
-  /* background-color: #162432; */
   background-color: #FFFFFF;
-	z-index: 100;
-	/* position: fixed;
-	top: 0;
-	left: 0; */
-  /* color: white; */
-  color: #010203;
+  color: var(--theme-light-text-color-main);
 	/* border: 1px solid salmon; */
 	font-family: Poppins;
   letter-spacing: 200;
+  z-index: 100;
   box-shadow: 0 2px 6px 3px #f0f0f08d;
 }
 
-.head {
+.nav {
+  width: 100%;
+  height: var(--navbar-height);
+  margin: 0 auto;
+  display: flex;
+	flex-direction: column;
+	align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
   height: 10vh;
   width: 100%;
+  padding: 8px;
   display: flex;
-  padding: 8px 0 0 0;
   justify-content: space-around;
   align-items: center;
   box-sizing: border-box;
@@ -36,40 +42,10 @@
   pointer-events: none;
 }
 
-.authContainer {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  width: 16%;
-  height: 8vh;
-  cursor: pointer;
-  color: #536DFE;
-  border: null;
-  border-left: .8px solid #222;
-}
-
-.avatar g {
-  height: 8vh;
-  fill: #536DFE;
-}
-
-/* .avatar g path {
-  fill: none;
-  stroke: #16df84;
-  stroke-width: 1px;
-} */
-
-.authContainer span {
-  font-variant: small-caps;
-  font-size: .6rem;
-  line-height: .8rem;
-  letter-spacing: 2px;
-  /* align-self: flex-end; */
-}
-
 .links {
   height: 6vh;
   width: 100%;
+  padding: 8px;
   display: flex;
   justify-content: space-evenly;
   letter-spacing: .5px;
@@ -83,14 +59,54 @@ a:active {
   border-bottom: .75px solid #16df84;
 }
 
-@media only screen and (min-width: 481px) {
-	.container {
-    height: 80px;
+/* Auth Container Stuff*/
+.authContainer {
+  display: flex;
+  align-items: center;
+  /* width: 16%; */
+  height: 8vh;
+  cursor: pointer;
+  color: #536DFE;
+  border: null;
+  border-left: .8px solid #222;
+}
+
+.avatar g {
+  height: 6vh;
+  max-height: 80px;
+  fill: #536DFE;
+}
+
+/* .avatar g path {
+  fill: none;
+  stroke: #16df84;
+  stroke-width: 1px;
+} */
+
+/* .authText {
+  font-variant: small-caps;
+  font-size: .6rem;
+  letter-spacing: 2px;
+} */
+/* line-height: .8rem; */
+/* align-self: flex-end; */
+/* End of Auth Container Stuff*/
+
+@media screen and (min-width: 481px) {
+  :root {
+    --navbar-height: 80px;
+  }
+
+  .nav {
+    max-width: 1200px;
+    width: 100%;
+    max-height: var(--navbar-height);
+    margin: 0 auto;
     flex-direction: row;
     justify-content: space-between;
   }
-  .head {
-    padding: 1vh;
+
+  .brand {
     width: max-content;
   }
 
@@ -99,10 +115,12 @@ a:active {
   }
   
   .links {
-    width: 360px;
-    justify-content: space-around;
+    min-width: 540px;
+    width: 60%;
+    justify-content: space-between;
     font-size: 1.2rem;
     letter-spacing: 1px;
+    /* border: solid 2px crimson; */
   }
 
   a:hover, a:focus {
@@ -110,15 +128,33 @@ a:active {
   }
 
   .authContainer {
-    width: calc(2vh + 40px);
-    height: 6vh;
+    /* width: calc(2vh + 40px); */
+    height: 4vh;
     padding: 0 1vh;
   }
-  
-  .authContainer span {
-    font-size: .75rem;
-    line-height: .1rem;
-    letter-spacing: 2px;
-    /* align-self: flex-end; */
+
+  .avatar {
+    height: 40px;
+    width: 40px;
+    padding-top: 4px;
+    object-fit: contain;
+    background-size: cover;
+    background-color: limegreen;
+    margin: 0 4px;
+    border-radius: 50%;
+    filter: drop-shadow(0 3px 6px hsla(0, 0%, 0%, 0.16));
+    /* box-shadow: 0 3px 6px 0 #00000029; */
   }
+
+  .avatar g {
+    height: 4vh;
+    max-height: 40px;
+    fill: #536DFE;
+  }
+
+/*   
+  .authText {
+    font-size: .8rem;
+    letter-spacing: 2px;
+  } */
 }
