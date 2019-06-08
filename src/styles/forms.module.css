@@ -1,18 +1,17 @@
 .inline_container {
-  border-bottom: 2px dotted rebeccapurple;
+	border-bottom: 2px dotted rebeccapurple;
 }
 
 .inline_input {
-  border: none;
-  background-color: #00000000;
-  min-width: 200px;
+	border: none;
+	background-color: #00000000;
+	min-width: 200px;
 }
 
 .inline_pretext {
-
 }
 
 .inline_error {
-  color: crimson;
-  border: 2px solid crimson
+	color: crimson;
+	border: 2px solid crimson;
 }

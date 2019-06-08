@@ -38,8 +38,10 @@
 	padding: 2vh;
 	min-height: 400px;
 	color: #f3f3f1;
-	background-image: linear-gradient(60deg, #3498db, #3d72b4);
+	background-color: #6284ff;
+	background-image: linear-gradient(200deg, #7defff 0%, #6284ff 65%, #275db5 100%);
 
+	/* background-image: linear-gradient(45deg, #3498db, #3d72b4); */
 	/* background-image: linear-gradient(to left, #2c4f6b, #32485e); */
 	/* background-image: linear-gradient(to bottom, #fff, #f6f6f6),
 	linear-gradient(to left, #2c4f6b, #32485e);
@@ -56,8 +58,10 @@
 	width: 100%;
 	margin: 4vh auto;
 	min-height: 400px;
-	background-color: #009670;
+	background-color: #3bb78f;
+	background-image: linear-gradient(to bottom, #3bb78f 0%, #0bab64 74%);
 
+	/* background-color: #009670; */
 	/* background-image: linear-gradient(to top, #009670, #00ab69); */
 	border-radius: 4px;
 	filter: drop-shadow(0 2px 6px #0000001a);
@@ -69,15 +73,43 @@
 	width: 100%;
 	padding: 2vh;
 	background-image: linear-gradient(to bottom, #fff, #f3f3f1);
-	filter: drop-shadow(0 2px 6px #0000001a);
+	filter: drop-shadow(2px 0 6px #0000001a);
 	border-radius: 4px;
 }
 
 .evalNext {
 	width: 100%;
-
-	color: antiquewhite;
+	color: azure;
 	padding: 4vh 2vh 2vh 2vh;
+}
+
+.evalAdLink a {
+
+	/* font-size: 1.2rem; */
+}
+
+.evalDisplay {
+	display: flex;
+	width: 80%;
+	justify-content: space-between;
+}
+
+.evalDisplayBlock {
+	width: 40%;
+}
+
+.evalTitle {
+	font-size: 1rem;
+	font-weight: 400;
+	letter-spacing: 1.2px;
+}
+
+.evalValue {
+	font-size: 2rem;
+	font-weight: 600;
+	color: #319177;
+	margin: 0 0;
+	line-height: inherit;
 }
 
 @media only screen and (min-width: 481px) {

@@ -28,13 +28,14 @@
 	/* filter: blur(0.4px); */
 }
 
-/* .card:hover {
+.card:hover {
 	animation-duration: 4s;
 	animation-timing-function: ease-in-out;
 	animation-delay: 5ms;
 	animation-iteration-count: 1;
 	transform: scale(1.02);
-} */
+	filter: drop-shadow(0 2px 6px hsla(0, 0%, 0%, 0.4));
+}
 
 .cardPic {
 	border-radius: 4px 4px 0 0;

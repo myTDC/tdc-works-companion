@@ -15,6 +15,7 @@ const Landing = lazy(() => import('./pages/landing'));
 const Registration = lazy(() => import('./pages/registration'));
 const Dashboard = lazy(() => import('./pages/dashboard'));
 const Learn = lazy(() => import('./pages/learn'));
+const Build = lazy(() => import('./pages/build'));
 const Tdc = lazy(() => import('./pages/tdc'));
 const Toolkit = lazy(() => import('./pages/toolkit'));
 const Page404 = lazy(() => import('./pages/page404'));
@@ -29,7 +30,10 @@ const App = () => {
 				<Router className='AppContainer'>
 					<Landing path='/' />
 					<Learn path='/works' />
+					<Learn path='/learn' />
+					<Build path='/build' />
 					<Dashboard path='/dash/*' />
+					<Dashboard path='/me/*' />
 					<Dashboard path='/user/*' />
 					<Registration path='/register' />
 					<Registration path='/registration' />

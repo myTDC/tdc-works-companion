@@ -1,0 +1,209 @@
+.learnContainer {
+	width: 100%;
+	margin: 0;
+	display: grid;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	grid-template-columns: calc(100%);
+	grid-template-rows: repeat(12, minmax(400px, calc(88vh - 16px)));
+	grid-column-gap: 0;
+	grid-row-gap: 0;
+	place-items: center;
+	grid-template-areas:
+	'learnHeroDisplay'
+	'learnHeroText'
+	'learnBenefitsDisplay'
+	'learnBenefitsText'
+	'learnPowers'
+	'learnPowers'
+	'learnRegistration'
+	'learnRegistration'
+	'learnCollabs'
+	'learnCollabDisplay'
+	'learnEventsDisplay'
+	'learnEventsDesc';
+	text-align: center;
+}
+
+/* Commons */
+.imageContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.textContainer {
+  padding: 4vh;
+}
+
+.learnImage {
+	width: 100%;
+	max-height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  
+	/* object-position: center; */
+}
+
+.learnTitle {
+	font-size: 3rem;
+}
+
+.learnSubTitle {
+	font-size: 2rem;
+}
+
+.learnMetaTitle {
+  font-size: 1rem;
+  letter-spacing: 1.2px;
+}
+
+.wip {
+  border: solid 4px crimson;
+}
+
+.textHighlight {
+	border-bottom: 4px solid #fff176;
+	box-shadow: inset 0 -8px 0 #fff176;
+}
+
+.textHighlight:hover {
+	border-bottom: 6px solid #ffcc33;
+	box-shadow: inset 0 -8px 0 #ffcc33;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.super:hover::before {
+	content: 'super-';
+}
+
+.textLight {
+  color: whitesmoke;
+}
+
+/* Specifics */
+
+.learnHeroDisplay {
+	grid-area: learnHeroDisplay;
+}
+
+.learnHeroText {
+	grid-area: learnHeroText;
+}
+
+.learnHeroIntro {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.learnBenefitsDisplay {
+  grid-area: learnBenefitsDisplay;
+}
+
+.learnBenefitsText {
+  grid-area: learnBenefitsText;
+}
+
+.learnPowers {
+  grid-area: learnPowers;
+  background-color: rebeccapurple;
+}
+
+.learnPowersIconContainer {
+  padding: 4vh;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 40%;
+}
+
+.powerIcon{
+  width: 10vh;
+  height: 11vh;
+  text-align: center;
+  margin: 8px;
+  background-color: white;
+  filter: drop-shadow(0 2px 2px #0000001a);
+  padding: 4px;
+}
+
+.powerIcon:hover{
+  background-color: #FFFFFFA0;
+  filter: drop-shadow(0 2px 4px #0000001a);
+}
+
+@media screen and (min-width: 481px) {
+	.learnContainer {
+		max-width: 1200px;
+		margin: 8px auto 0;
+		grid-template-columns: repeat(2, minmax(400px, calc(50%)));
+		grid-template-rows: repeat(6, minmax(400px, calc(88vh - 16px)));
+		grid-template-areas:
+		'learnHeroText learnHeroDisplay'
+		'learnBenefitsDisplay learnBenefitsText'
+		'learnPowers learnPowers'
+		'learnRegistration learnRegistration'
+		'learnCollabs learnCollabDisplay'
+		'learnEventsDisplay learnEventsDesc';
+		text-align: start;
+	}
+
+	.learnHeroIntro {
+		width: 50%;
+		margin: 0;
+	}
+}
+
+/* .item-c {
+	grid-area: whyImg;
+}
+
+.item-d {
+	grid-area: whyText;
+}
+
+.item-c {
+	grid-area: whatImg;
+}
+
+.item-d {
+	grid-area: whatText;
+}
+
+.container {
+	margin: 0;
+	background-color: lightseagreen;
+	display: grid;
+	grid-template-columns: calc(100% - 16px);
+	grid-template-rows: repeat(6, minmax(400px, calc(80vh - 16px)));
+	grid-column-gap: 16px;
+	grid-row-gap: 16px;
+	place-items: center;
+	grid-template-areas:
+	'heroImage'
+	'heroCall'
+	'whyText'
+	'whyImg'
+	'whatImg'
+	' whatText';
+}*/
+
+/* .container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(400px, calc(50% - 16px)));
+  grid-template-rows: repeat(3, minmax(400px, calc(50vh - 16px)));
+  grid-template-areas:
+  'heroImage heroCall'
+  'whyText whyImg'
+  'whatImg whatText';
+}
+
+.heroHeading {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+.heroSubheading {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+} */

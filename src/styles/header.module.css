@@ -1,78 +1,78 @@
 .nav {
-  background: linear-gradient(
-    to bottom,
-    #040404,
-    #041620
-  );
-  /* background-color: #00000099; */
-  /* linear-gradient(
+	background: linear-gradient(to bottom, #040404, #041620);
+
+	/* background-color: #00000099; */
+	/* linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0),
     rgba(0, 0, 0, 0.6) rgba(4, 22, 32, 1)
   ); */
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  /* position: sticky;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+
+	/* position: sticky;
   top: 0px;
   left: 0px;
   z-index: 1000; */
-  padding: 8px 0 ;
-  align-items: center;
-  justify-content: space-evenly;
+	padding: 8px 0;
+	align-items: center;
+	justify-content: space-evenly;
 }
 
 .mainLink {
-  display: flex;
-  box-sizing: border-box;
-  margin: auto 1rem;
-  /* padding: `1.45rem 1.0875rem`,
+	display: flex;
+	box-sizing: border-box;
+	margin: auto 1rem;
+
+	/* padding: `1.45rem 1.0875rem`,
    width: '240px', */
-  align-items: center;
-  color: floralwhite;
-  text-decoration: none;
+	align-items: center;
+	color: floralwhite;
+	text-decoration: none;
 }
 
 .logo {
-  width: 6rem;
-  max-height: 3rem;
-  margin: 0px;
+	width: 6rem;
+	max-height: 3rem;
+	margin: 0px;
 }
 
 .title {
-  max-height: 3rem;
-  margin: 0;
-  margin-left: 0.6rem;
-  font-size: 2rem;
+	max-height: 3rem;
+	margin: 0;
+	margin-left: 0.6rem;
+	font-size: 2rem;
 }
 
 .linkContainer {
-  display: flex;
-  /* flex: 1; */
-  width: 100%;
-  max-width: 320px;
-  margin: 0;
-  justify-content:space-evenly;
-  align-items: flex-end;
-  padding: .8rem;
+	display: flex;
+
+	/* flex: 1; */
+	width: 100%;
+	max-width: 320px;
+	margin: 0;
+	justify-content: space-evenly;
+	align-items: flex-end;
+	padding: 0.8rem;
 }
 
 .linkContainer > .links {
-  font-size: 1rem;
-  margin: .2rem;
-  color: floralwhite;
+	font-size: 1rem;
+	margin: 0.2rem;
+	color: floralwhite;
 }
 
 .linkContainer > .links:hover {
-  margin: .2rem;
-  color: #66EFAC;
+	margin: 0.2rem;
+	color: #66efac;
 }
 
-@media screen and (min-width: 768px){
-  .nav {
-    justify-content: space-between;
-    flex-direction: row;
-    height: 6rem;
-    max-height: 80px;
-  }
+@media screen and (min-width: 768px) {
+	.nav {
+		justify-content: space-between;
+		flex-direction: row;
+		height: 6rem;
+		max-height: 80px;
+	}
 }
