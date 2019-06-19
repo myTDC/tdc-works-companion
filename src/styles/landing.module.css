@@ -295,6 +295,8 @@
 }
 
 .homeFooter {
+	grid-area: homeFooter;
+	width: 100%;
 	display: flex;
 	padding: 4vh 4vh;
 	justify-content: space-between;

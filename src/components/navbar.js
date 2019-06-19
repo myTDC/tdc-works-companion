@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from '@reach/router';
 import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Menu, MenuList, MenuButton, MenuItem, MenuLink } from '@reach/menu-button';
 
 import signon from '../redux/actions/auth';
@@ -29,14 +30,14 @@ const AuthComp = (props) => {
 		//user,
 		join,
 	} = props;
-
+	const dispatch = useDispatch();
 	return /**user*/ true ? (
 		<aside
 			{...props}
 			role='button'
 			className='authContainer'
-			onClick={(event) => test_logIn(event)}
-			onKeyPress={(event) => test_logIn(event)}
+			onClick={() => dispatch(signon)}
+			onKeyPress={() => dispatch(signon)}
 			tabIndex='0'>
 			<img
 				className='avatar'
@@ -93,13 +94,13 @@ NavMenu.propTypes = {};
 // export default NavMenu
 
 const navbar = (props) => {
-	const { isMobile, user } = props;
+	const { isMobile, user, signon } = props;
 	return (
 		<section className='container'>
 			<header className='nav'>
 				<section className='brand'>
 					<img src={logoEduOnLi} className='logo' alt='TDC Reach logo for Dark Backgrounds' />
-					{isMobile && <AuthComp user={props.user} />}
+					{isMobile && <AuthComp user={user} />}
 				</section>
 				<nav className='links'>
 					<Link to='/'>Home</Link>
@@ -108,7 +109,7 @@ const navbar = (props) => {
 					<Link to='register'>Register</Link>
 					<Link to='toolkit'>Tools</Link>
 					{true && <Link to='dash'>Dashboard</Link>}
-					{!isMobile && <AuthComp user={props.user} loginAction={props.signon} />}
+					{!isMobile && <AuthComp user={user} loginhandler={signon} />}
 					{false && <NavMenu />}
 				</nav>
 			</header>
@@ -134,7 +135,5 @@ export default connect(
 	mapStateToProps,
 	{ signon }
 )(navbar);
-{
-	/* <Link to='register'>Grow</Link>
+/* <Link to='register'>Grow</Link>
 					<Link to='tdc'>TDC</Link> */
-}

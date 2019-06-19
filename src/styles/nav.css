@@ -24,12 +24,14 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	font-size: 0.9rem;
 	justify-content: space-between;
 }
 
 .brand {
 	height: 10vh;
 	width: 100%;
+	max-width: fit-content;
 	padding: 8px;
 	display: flex;
 	justify-content: space-between;
@@ -39,7 +41,7 @@
 
 .logo {
 	height: 8vh;
-	max-width: 73%;
+	max-width: 60%;
 	cursor: pointer;
 	pointer-events: none;
 }
@@ -65,9 +67,7 @@ a:active {
 .authContainer {
 	display: flex;
 	align-items: center;
-	max-width: 26%;
-
-	/* width: 16%; */
+	max-width: 40%;
 	height: 8vh;
 	cursor: pointer;
 	color: #536dfe;
@@ -78,8 +78,8 @@ a:active {
 }
 
 .avatar {
-	height: 44px;
-	width: 44px;
+	height: 36px;
+	width: 36px;
 	object-fit: contain;
 	background-size: cover;
 	background-color: limegreen;
@@ -137,7 +137,7 @@ a:active {
 		min-width: 540px;
 		width: 60%;
 		justify-content: space-between;
-		font-size: 1.2rem;
+		font-size: 1.1rem;
 		letter-spacing: 1px;
 
 		/* border: solid 2px crimson; */

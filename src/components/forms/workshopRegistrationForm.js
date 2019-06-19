@@ -91,26 +91,28 @@ const validationScheme = yup.object().shape({
 		.required(
 			'Our interactions are tailored to your age group so we do need to know how old you are'
 		),
-	contact_num: yup
-		.string()
-		.min(10, 'We need your complete mobile number')
-		.max(11, 'We only need one mobile number')
-		.required('The more we know the better we can help you.'),
-	email: yup
-		.string()
-		.min(8, 'We need your complete mobile number')
-		.required('The more we know the better we can help you.'),
 	college: yup
 		.string()
 		.min(4, "We're sorry but that doesn't look like the complete college name")
-		.max(80, 'woah, can we recommed using a shorter name?')
-		.required('The more we know the better we can help you.'),
+		.max(80, 'woah! can we recommend using a abbreviated name for the college?')
+		.required(`We often have college specific offers & pricing, Don't Miss out!`),
+	contact_num: yup
+		.string()
+		.min(10, 'Your mobile number seems a bit short! could you check it again please?')
+		.max(11, 'We only need one of your mobile number(s)')
+		.required(`We'd love to keep you updated about the workshops`),
+	email: yup
+		.string()
+		.email()
+		.min(8, 'Your email seems a bit short! could you check it again please?')
+		.required('We need your emailid to send you the receipts, offers & more opportunities'),
 });
 
 const RegForm = (props) => (
 	<Formik
 		initialValues={initialValues}
 		validationSchema={validationScheme}
+		{...props}
 		onSubmit={(values, actions, errors) => {
 			actions.setSubmitting(true);
 			console.log('Form has values:', values);

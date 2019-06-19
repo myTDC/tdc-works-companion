@@ -20,6 +20,10 @@ const Tdc = lazy(() => import('./pages/tdc'));
 const Toolkit = lazy(() => import('./pages/toolkit'));
 const Page404 = lazy(() => import('./pages/page404'));
 
+const GenericForm = (props) => {
+	return <div>Hi! i'm a generic form! {JSON.stringify(props)}</div>;
+};
+
 const App = () => {
 	const [windWidth, isMobile] = useWindowWidth();
 
@@ -39,7 +43,9 @@ const App = () => {
 					<Registration path='/registration' />
 					<Tdc path='/tdc' />
 					<Toolkit path='/toolkit/*' width={windWidth} isMobile={isMobile} />
+					<Toolkit path='/toolkit/:toolId' />
 					<Page404 default />
+					<GenericForm path='collab/:id/:id' />
 				</Router>
 			</Suspense>
 		</div>
