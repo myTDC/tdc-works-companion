@@ -1,0 +1,61 @@
+.homeFooter {
+	grid-area: homeFooter;
+	width: 100%;
+	padding: 4vh 4vh;
+	margin-top: 4vh;
+	background-color: whitesmoke;
+
+	/* box-shadow: 0 -2px 4px 1px #00000010; */
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.homeFooterLogo {
+	height: 60px;
+}
+
+.homeFooterGroup {
+	margin: 20px 8px;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	max-width: 304px;
+}
+
+.homeFooterGroup:nth-child(1) {
+	margin: 0 8px 0 0;
+}
+
+.homeFooterFrom {
+	display: flex;
+}
+
+@media only screen and (min-width: 481px) {
+	.homeFooter {
+		padding: 32px 32px;
+		text-align: start;
+		flex-wrap: nowrap;
+	}
+
+	.homeFooterGroup {
+		margin: 16px 0;
+		width: 16%;
+	}
+}
+
+/* Animations */
+
+/* Shockwave */
+.btn--shockwave.is-active {
+	animation: shockwaveJump 1s ease-out infinite;
+}
+
+.btn--shockwave.is-active::after {
+	animation: shockwave 1s 0.65s ease-out infinite;
+}
+
+.btn--shockwave.is-active::before {
+	animation: shockwave 1s 0.5s ease-out infinite;
+}

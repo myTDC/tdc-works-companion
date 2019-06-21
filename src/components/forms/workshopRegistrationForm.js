@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Formik, Form, FastField, FieldArray } from 'formik';
 import * as yup from 'yup';
 
-import '../../styles/registration.css';
+import './workshopRegForm.css';
 import LightInput from './inline_InputLight';
 // const formFieldLogger = (field, form, props, errors) => {
 // 	console.group('Data for', field.name);

@@ -6,12 +6,13 @@ const NavLink = (props) => {
 	return (
 		<Link
 			{...props}
-			getProps={({ isCurrent }) => {
+			getProps={(innerprops) => {
 				// the object returned here is passed to the
 				// anchor element's props
+				// console.log(innerprops);
 				return {
 					style: {
-						borderBottom: isCurrent ? `solid 2px ${props.color}` : null,
+						borderBottom: innerprops.isCurrent ? `solid 3px #16df84` : null,
 					},
 				};
 			}}
@@ -20,7 +21,11 @@ const NavLink = (props) => {
 };
 
 NavLink.propTypes = {
-	isCurrent: PropTypes.string,
+	color: PropTypes.string,
+};
+
+NavLink.defaultProps = {
+	color: '#16df84',
 };
 
 export default NavLink;

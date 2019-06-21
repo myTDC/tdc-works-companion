@@ -2,11 +2,15 @@ import React from 'react';
 import { getIn } from 'formik';
 
 const LightInput = ({ field, form, ...props }) => {
-	const errorMessage = getIn(form.errors, field.name);
-	const touched = getIn(form.touched, field.name);
+	let errorMessage = null;
+	let touched = null;
+	if (form) {
+		errorMessage = getIn(form.errors, field.name);
+		touched = getIn(form.touched, field.name);
 
-	// console.log(field.name, 'is touched? :', touched);
-	// console.log(field.name, 'has error? :', errorMessage);
+		// console.log(field.name, 'is touched? :', touched);
+		// console.log(field.name, 'has error? :', errorMessage);
+	}
 
 	return (
 		<React.Fragment>
@@ -31,5 +35,13 @@ const LightInput = ({ field, form, ...props }) => {
 };
 
 LightInput.propTypes = {};
+
+LightInput.defaultProps = {
+	pretext: '<pre-text goes here>',
+	name: 'defaulter',
+	value: '',
+	placeholder: '<WARN! Generic Placeholder>',
+	posttext: '<post-text goes here>',
+};
 
 export default LightInput;

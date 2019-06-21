@@ -59,7 +59,6 @@
 
 a:active {
 	color: #16df84;
-	font-weight: 900;
 	border-bottom: 0.75px solid #16df84;
 }
 
@@ -71,7 +70,7 @@ a:active {
 	height: 8vh;
 	cursor: pointer;
 	color: #536dfe;
-	border: null;
+	border: none;
 	padding: 1vh;
 	border-left: 0.8px solid #222;
 	justify-content: space-between;
@@ -134,10 +133,10 @@ a:active {
 	}
 
 	.links {
-		min-width: 540px;
-		width: 60%;
+		min-width: 440px;
+		width: 48%;
 		justify-content: space-between;
-		font-size: 1.1rem;
+		font-size: 1.2rem;
 		letter-spacing: 1px;
 
 		/* border: solid 2px crimson; */
@@ -146,11 +145,11 @@ a:active {
 	a:hover,
 	a:focus {
 		color: #16df84;
+
+		/* font-weight: 700; */
 	}
 
 	.authContainer {
-
-		/* width: calc(2vh + 40px); */
 		height: 4vh;
 		padding: 0 1vh;
 	}

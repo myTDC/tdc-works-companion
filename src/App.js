@@ -1,7 +1,9 @@
 import React, { lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { Router } from '@reach/router';
+import { Helmet } from 'react-helmet';
 
+import Footer from './components/footer';
 // import logo from "./res/imgs/tdc-reach-full-ondark.svg"
 import './styles/App.css';
 
@@ -12,16 +14,25 @@ import Navbar from './components/navbar';
 import { useWindowWidth } from './commonHooks';
 
 const Landing = lazy(() => import('./pages/landing'));
-const Registration = lazy(() => import('./pages/registration'));
 const Dashboard = lazy(() => import('./pages/dashboard'));
 const Learn = lazy(() => import('./pages/learn'));
 const Build = lazy(() => import('./pages/build'));
 const Tdc = lazy(() => import('./pages/tdc'));
 const Toolkit = lazy(() => import('./pages/toolkit'));
+const Studio = lazy(() => import('./pages/cstudio'));
 const Page404 = lazy(() => import('./pages/page404'));
 
 const GenericForm = (props) => {
 	return <div>Hi! i'm a generic form! {JSON.stringify(props)}</div>;
+};
+
+export const routes = {
+	Home: { name: 'Home', path: '/' },
+	Learn: { name: 'Learn', path: '/start-learning' },
+	Build: { name: 'Build', path: '/start-building' },
+	Dash: { name: 'Dash', path: '/dash/*', requiresAuth: true },
+	Toolkit: { name: 'Toolkit', path: '/toolkit/*' },
+	Studio: { name: 'Studio', path: '/create-forms', requiresAuth: true },
 };
 
 const App = () => {
@@ -29,25 +40,32 @@ const App = () => {
 
 	return (
 		<div className='App'>
+			<Helmet>
+				<title>Works Home</title>
+				<meta name='description' content='Homepage of the companion App for TDC Workshops' />
+				<meta name='theme-color' content='#008f68' />
+			</Helmet>
 			<Navbar isMobile={isMobile} />
 			<Suspense delayMs='50' fallback={<div>Loading the cool stuff... </div>}>
 				<Router className='AppContainer'>
-					<Landing path='/' />
+					<Landing path={routes.Home.path} />
+					<Learn path={routes.Learn.path} />
 					<Learn path='/works' />
 					<Learn path='/learn' />
+					<Build path={routes.Build.path} />
 					<Build path='/build' />
-					<Dashboard path='/dash/*' />
+					<Dashboard path={routes.Dash.path} />
 					<Dashboard path='/me/*' />
 					<Dashboard path='/user/*' />
-					<Registration path='/register' />
-					<Registration path='/registration' />
 					<Tdc path='/tdc' />
-					<Toolkit path='/toolkit/*' width={windWidth} isMobile={isMobile} />
+					<Toolkit path={routes.Toolkit.path} width={windWidth} isMobile={isMobile} />
 					<Toolkit path='/toolkit/:toolId' />
-					<Page404 default />
+					<Studio path={routes.Studio.path} />
 					<GenericForm path='collab/:id/:id' />
+					<Page404 default />
 				</Router>
 			</Suspense>
+			<Footer />
 		</div>
 	);
 };

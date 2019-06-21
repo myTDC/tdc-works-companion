@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from '@reach/router';
-import Footer from '../components/footer';
+import NavLink from '../components/navLink';
 // import { Formik, Form, Field } from "formik";
 //Components and reducers
 import {
@@ -85,9 +84,9 @@ const ServiceCard = ({ data }) => {
 			<img src={data.pic} alt={'an depiction of ' + data.desc} />
 			<h3>{data.label}</h3>
 			<p>{data.desc}</p>
-			<Link className={styles.homeOutLink} to={data.link}>
+			<NavLink className={styles.homeOutLink} to={data.link}>
 				{data.linkLabel}
-			</Link>
+			</NavLink>
 		</div>
 	);
 };
@@ -180,7 +179,7 @@ class Landing extends Component {
 									<h3>Learn</h3>
 									Learn how to build a startup in 10 workshops.
 									<br />
-									<span className={styles.mention}>At @tdc_works</span>
+									<span className='mention'>At @tdc_works</span>
 									<button className={styles.buttonPrimary} type='button'>
 										Start Learning
 									</button>
@@ -189,7 +188,7 @@ class Landing extends Component {
 									<h3>Build</h3>
 									Build upon your idea over the summer internship.
 									<br />
-									<span className={styles.mention}>With @team_tdc</span>
+									<span className='mention'>With @team_tdc</span>
 									<button className={styles.buttonSecondary} type='button'>
 										Let's Build
 									</button>
@@ -265,7 +264,6 @@ class Landing extends Component {
 						</div>
 					</div>
 				</section>
-				<Footer />
 			</div>
 		);
 	}

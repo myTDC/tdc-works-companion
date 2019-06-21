@@ -5,7 +5,7 @@ import { Link } from '@reach/router';
 //Components and reducers
 
 //Styles
-import styles from '../styles/landing.module.css';
+import styles from '../styles/footer.module.css';
 
 //Image Resources
 // import Img from "../components/ImgExt"

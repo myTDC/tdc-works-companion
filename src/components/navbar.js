@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from '@reach/router';
+import NavLink from './navLink';
 import { connect } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { Menu, MenuList, MenuButton, MenuItem, MenuLink } from '@reach/menu-button';
@@ -11,14 +12,15 @@ import '../styles/nav.css';
 // import logoOd from "../res/imgs/tdc-educate-full-ondark.svg"
 import logoEduOnLi from '../res/imgs/tdc-educate-full-onlight.svg';
 import ava_female_tee from '../res/avatars/avatar-female-tshirt.svg';
+import { routes } from '../App';
 
 // import { ReactComponent as Avatar } from '../res/imgs/user-outline-optim.svg';
 
-function test_logIn(event) {
-	event.preventDefault();
-	console.log('Loggin in User');
-	return null;
-}
+// function test_logIn(event) {
+// 	event.preventDefault();
+// 	console.log('Loggin in User');
+// 	return null;
+// }
 
 // function test_logOut(event) {
 // 	event.preventDefault();
@@ -31,7 +33,7 @@ const AuthComp = (props) => {
 		join,
 	} = props;
 	const dispatch = useDispatch();
-	return /**user*/ true ? (
+	return /*user*/ true ? (
 		<aside
 			{...props}
 			role='button'
@@ -94,7 +96,9 @@ NavMenu.propTypes = {};
 // export default NavMenu
 
 const navbar = (props) => {
-	const { isMobile, user, signon } = props;
+	const { isMobile, user } = props;
+	const current_routes = Object.values(routes);
+	// console.log(current_routes);
 	return (
 		<section className='container'>
 			<header className='nav'>
@@ -103,13 +107,13 @@ const navbar = (props) => {
 					{isMobile && <AuthComp user={user} />}
 				</section>
 				<nav className='links'>
-					<Link to='/'>Home</Link>
-					<Link to='works'>Learn</Link>
-					<Link to='build'>Build</Link>
-					<Link to='register'>Register</Link>
-					<Link to='toolkit'>Tools</Link>
-					{true && <Link to='dash'>Dashboard</Link>}
-					{!isMobile && <AuthComp user={user} loginhandler={signon} />}
+					{current_routes.map((route, i) => (
+						<NavLink key={i} to={route.path}>
+							{route.name}
+						</NavLink>
+					))}
+					{false && <NavLink to='dash'>Dashboard</NavLink>}
+					{!isMobile && <AuthComp user={user} />}
 					{false && <NavMenu />}
 				</nav>
 			</header>

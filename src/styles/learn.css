@@ -1,10 +1,11 @@
 .learnContainer {
 	width: 100%;
 	margin: 0;
+	padding: 0 0 4vh;
 	display: grid;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	grid-template-columns: calc(100%);
-	grid-template-rows: repeat(12, minmax(400px, calc(auto)));
+	grid-template-rows: repeat(12, minmax(500px, 100%));
 	column-gap: 0;
 	row-gap: 0;
 	place-items: center;
@@ -30,13 +31,9 @@
 .imageContainer {
 	width: 100%;
 	height: 100%;
-	width: -webkit-fill-available;
+	object-fit: contain;
 
-	/* object-fit: contain; */
-}
-
-.textContainer {
-	padding: 4vh;
+	/* width: -webkit-fill-available; */
 }
 
 .learnImage {
@@ -48,17 +45,32 @@
 	/* object-position: center; */
 }
 
+.textContainer {
+	padding: 4vh;
+}
+
 .learnTitle {
 	font-size: 3rem;
+	margin: 2rem 0 1rem;
 }
 
 .learnSubTitle {
-	font-size: 2rem;
+	font-size: 1.8rem;
 }
 
 .learnMetaTitle {
-	font-size: 1rem;
+	font-size: 1.2rem;
 	letter-spacing: 1.2px;
+	color: grey;
+	font-variant-caps: all-petite-caps;
+}
+
+.learnInfoStub {
+	font-size: 1.1rem;
+}
+
+.learnParaStub {
+	line-height: 1.6rem;
 }
 
 .wip {
@@ -88,7 +100,6 @@
 }
 
 /* Specifics */
-
 .learnHeroDisplay {
 	grid-area: learnHeroDisplay;
 }
@@ -125,18 +136,21 @@
 	display: flex;
 	flex-wrap: wrap;
 	max-width: 100%;
+	align-items: center;
+	justify-content: space-around;
 }
 
 .powerIcon {
-	width: 10vh;
-	height: 11vh;
+	width: 68px;
+	height: 68px;
 	text-align: center;
 	margin: 8px;
 	background-color: #eeeeee;
 	filter: drop-shadow(0 2px 2px #0000001a);
 	padding: 4px;
 	border-radius: 2px;
-	line-height: 0.2;
+	line-height: 0.6;
+	font-size: 0.8rem;
 }
 
 .powerIcon:hover {
@@ -155,23 +169,20 @@
 	display: flex;
 	flex-wrap: wrap;
 	width: 100%;
-
-	/* background-color: #f39998; */
 	background-color: whitesmoke;
 
+	/* background-color: #f39998; */
 	/* border: solid 2px crimson; */
 }
 
 .learnRegistrationDisplay {
 	width: 100%;
 	display: flex;
-
-	/* flex-direction: column; */
 	flex-wrap: wrap;
 }
 
 .learnRegistrationText {
-	margin-top: 8vh;
+	margin-top: 12vh;
 }
 
 .learnRegistrationImage {
@@ -185,12 +196,10 @@
 
 .learnCollabs {
 	grid-area: learnCollabs;
-	border: solid 2px crimson;
 }
 
 .learnCollabDisplay {
 	grid-area: learnCollabDisplay;
-	border: solid 2px rebeccapurple;
 }
 
 .learnParaWAction {
@@ -202,36 +211,57 @@
 	font-weight: 600;
 }
 
+.learnCollabCardContainer {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	overflow-y: auto;
+}
+
 .learnCollabCard {
-	margin: 8px 4px;
-	background-color: wheat;
-	filter: drop-shadow(0 3px 2px #2121211a);
+	margin: 1.5vh 1vh;
+	padding: 2px;
+	border-radius: 2px;
+	background-color: white;
+	filter: drop-shadow(0 3px 2px #21212133);
+	width: 120px;
+	height: 120px;
+}
+
+.learnCollabCard:hover {
+	transform: scale3d(1.05, 1.05, 1.02);
+	transition-duration: 600ms;
+	transition-timing-function: ease-in-out;
 }
 
 .learnEventsDisplay {
 	grid-area: learnEventsDisplay;
-	border: solid 2px crimson;
 }
 
 .learnEventsDescription {
 	grid-area: learnEventsDesc;
-	border: solid 2px crimson;
+}
+
+.learnInfoStub:hover::after {
+	content: ' navigates to another website when you click';
+	font-size: 0.6rem;
+	color: #651fff;
+	font-variant-caps: all-petite-caps;
 }
 
 @media screen and (min-width: 481px) {
 	.learnContainer {
 		max-width: 1200px;
 		margin: 8px auto 0;
-		grid-template-columns: repeat(2, minmax(400px, calc(50%)));
-		grid-template-rows: repeat(6, minmax(400px, calc(auto)));
+		grid-template-columns: repeat(2, minmax(50%, calc(50%)));
+		grid-template-rows: repeat(6, minmax(88vh, calc(88vh)));
 		grid-template-areas:
 		'learnHeroText learnHeroDisplay'
 		'learnBenefitsDisplay learnBenefitsText'
 		'learnPowers learnPowers'
 		'learnRegistration learnRegistration'
-		'learnCollabs learnCollabDisplay'
-		'learnEventsDisplay learnEventsDesc'
-		'homeFooter homeFooter';
+		'learnEventsDesc learnEventsDisplay'
+		'learnCollabs learnCollabDisplay';
 		text-align: start;
 
 		/* row-gap: 8vh; */
@@ -248,7 +278,7 @@
 	}
 
 	.powerIcon {
-		line-height: 1.2;
+		line-height: 0.8;
 	}
 
 	.learnRegistration {
