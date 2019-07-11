@@ -46,6 +46,14 @@ a:visited {
 	text-decoration: none;
 }
 
+.debugger {
+	background-color: antiquewhite;
+	width: 32%;
+	margin: 2rem auto;
+	padding: 2rem;
+	text-align: start;
+}
+
 .externalLink {
 	color: salmon;
 }

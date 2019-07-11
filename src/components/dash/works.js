@@ -39,7 +39,7 @@ const WorkshopDetails = (props) => {
 			<div className='worksPopularity'>
 				<div className='worksUserRating'>
 					<span className='worksRating'>⚝ {props.feedback}</span>
-					<span className='worksRatingMax'>/5.0</span>
+					<span className='worksRatingMax'>/5</span>
 				</div>
 			</div>
 			<div className='worksFooter'>

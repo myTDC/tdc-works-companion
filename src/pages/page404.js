@@ -9,27 +9,24 @@ const Page404 = (props) => {
 			<h4>Uh-oh seems you're lost in the expanse of TDC Universe.</h4>
 
 			<p>
-				We hear you were looking for <pre>{props.uri}</pre>
+				We hear you were looking for <code>{props.uri}</code>
 			</p>
 
-			<p>
-				We also found the following information:
-				<code
-					style={{
-						width: '80%',
-						margin: '0 auto',
-						display: 'flex',
-						flexWrap: 'warp',
-						fontSize: '0.8rem',
-					}}>
-					{JSON.stringify(props)}
-				</code>
+			<p style={{ padding: '2rem' }}>
+				If you're a developer: we've also found some information for you in the console.
 			</p>
 
 			<p>
 				How about we show you the way back to the{' '}
 				<Link to='/' style={{ color: '#16df84', borderBottom: 'solid 2px #16df84' }}>
 					home page
+				</Link>
+				?
+			</p>
+			<p>
+				or would you prefer to go back to the{' '}
+				<Link to='../' style={{ color: '#16df84', borderBottom: 'solid 2px #16df84' }}>
+					previous page
 				</Link>
 				?
 			</p>

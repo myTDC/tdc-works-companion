@@ -1,0 +1,120 @@
+.feedbContainer {
+	width: 100%;
+	min-height: 88vh;
+	margin: 0 auto;
+	padding: 0.8rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: white;
+}
+
+.feedbCardContainer {
+	width: 100%;
+	height: 12vh;
+
+	margin: 1vh 0;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	text-align: start;
+
+	background-color: #8b2ff8;
+	background-image: linear-gradient(60deg, #9b49ff 0%, #6cdfff 100%);
+	border-right: solid 2px #9b49ff;
+	border-radius: 4px;
+
+	/* filter: drop-shadow(0 0 1px #0000001a); */
+
+	font-family: 'Mukta', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.feedbCardContainer:hover {
+	box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.16);
+	border-right: solid 3px #8b2ff8;
+	color: #010203;
+}
+
+.feedbCardTitleContainer {
+	height: 100%;
+	width: 50%;
+	flex-grow: 1;
+	padding: 1rem 1.4rem;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.feedbCardTitle {
+	font-size: 1.2rem;
+	font-weight: 500;
+	color: white;
+	margin: auto 0;
+}
+
+.feedbCardRatingContainer {
+	height: 100%;
+	width: 36%;
+	font-size: 1rem;
+	filter: drop-shadow(-2px 0px 2px #0000004d);
+}
+
+.feedbCardRatingClip {
+	height: 100%;
+	width: 100%;
+	padding: 1.5rem 1rem 1rem;
+	background-color: white;
+	display: flex;
+	align-items: baseline;
+	justify-content: flex-end;
+	clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 15% 100%, 0% 50%);
+}
+
+.feedbCardRating {
+	font-size: 1.8rem;
+	font-weight: 700;
+	color: #8b2ff8;
+}
+
+.feedbCardRatingMax {
+}
+
+@media only screen and (min-width: 481px) {
+	.feedbContainer {
+		max-width: 1000px;
+		text-align: start;
+		padding: 4rem;
+	}
+
+	.feedbCardContainer {
+		height: 10vh;
+	}
+
+	.feedbCardTitleContainer {
+		padding: 1rem 1.4rem;
+	}
+
+	.feedbCardTitle {
+		font-size: 1.6rem;
+		font-weight: 500;
+		color: white;
+		margin: auto 0;
+	}
+
+	.feedbCardRatingContainer {
+		height: 100%;
+		width: 24%;
+		font-size: 1.4rem;
+		filter: drop-shadow(-2px 0px 1px #0000002d);
+	}
+
+	.feedbCardRatingClip {
+		padding: 1.5rem 1rem 1rem;
+		align-items: baseline;
+		justify-content: flex-end;
+	}
+
+	.feedbCardRating {
+		font-size: 2.2rem;
+	}
+}

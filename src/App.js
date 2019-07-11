@@ -19,6 +19,7 @@ const Learn = lazy(() => import('./pages/learn'));
 const Build = lazy(() => import('./pages/build'));
 const Tdc = lazy(() => import('./pages/tdc'));
 const Toolkit = lazy(() => import('./pages/toolkit'));
+const Feedback = lazy(() => import('./pages/feedback'));
 const Studio = lazy(() => import('./pages/cstudio'));
 const Page404 = lazy(() => import('./pages/page404'));
 
@@ -29,9 +30,10 @@ const GenericForm = (props) => {
 export const routes = {
 	Home: { name: 'Home', path: '/' },
 	Learn: { name: 'Learn', path: '/start-learning' },
-	Build: { name: 'Build', path: '/start-building' },
-	Dash: { name: 'Dash', path: '/dash/*', requiresAuth: true },
-	Toolkit: { name: 'Toolkit', path: '/toolkit/*' },
+	// Build: { name: 'Build', path: '/start-building' },
+	Dash: { name: 'Dash', path: '/dash/', requiresAuth: true },
+	Toolkit: { name: 'Toolkit', path: '/toolkit/' },
+	Feedback: { name: 'Feedback', path: '/feedback/' },
 	Studio: { name: 'Studio', path: '/create-forms', requiresAuth: true },
 };
 
@@ -52,14 +54,14 @@ const App = () => {
 					<Learn path={routes.Learn.path} />
 					<Learn path='/works' />
 					<Learn path='/learn' />
-					<Build path={routes.Build.path} />
+					{/* <Build path={routes.Build.path} /> */}
 					<Build path='/build' />
 					<Dashboard path={routes.Dash.path} />
 					<Dashboard path='/me/*' />
 					<Dashboard path='/user/*' />
 					<Tdc path='/tdc' />
-					<Toolkit path={routes.Toolkit.path} width={windWidth} isMobile={isMobile} />
-					<Toolkit path='/toolkit/:toolId' />
+					<Toolkit path='/toolkit/*' width={windWidth} isMobile={isMobile} />
+					<Feedback path='/feedback/*' />
 					<Studio path={routes.Studio.path} />
 					<GenericForm path='collab/:id/:id' />
 					<Page404 default />

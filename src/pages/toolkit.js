@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from 'react'; //useState, useEffect,
-import { Router, Link } from '@reach/router';
+import { Router } from '@reach/router';
+import NavLink from '../components/navLink';
 
 // import { useWindowWidth } from "../App";
 import styles from '../styles/tools.module.css';
@@ -11,18 +12,31 @@ const Page404 = lazy(() => import('../pages/page404'));
 // import herov2 from "../res/imgs/tdc-toolkit-homi-o.svg"
 // import Valuations from "./tools/valuations"
 
+export const toolingRoutes = {
+	ToolkitHome: { name: 'Toolkit Home', path: './' },
+	Valuation: { name: 'Valuation', path: './find-valuation' },
+	GoBack: { name: 'Go Back', path: '../' },
+};
+
 const ToolsNav = (props) => {
+	const tool_routes = Object.values(toolingRoutes);
+
 	return (
 		<nav className={styles.toolsNav}>
 			We really like our tools.
 			<aside className={styles.linksContainer}>
-				<Link to='/toolkit'>Toolkit Home</Link> <Link to='find-valuation'>Startup Valuation</Link>{' '}
+				{tool_routes.map((route, i) => (
+					<NavLink key={i} to={route.path}>
+						{route.name}
+					</NavLink>
+				))}
 			</aside>
 		</nav>
 	);
 };
 
 export const Tools = (props) => {
+	const tool_routes = Object.values(toolingRoutes);
 	return (
 		<>
 			<section className={styles.heroContainer}>
@@ -38,8 +52,15 @@ export const Tools = (props) => {
 				<br />
 				Here you can find an index of all the tools availaible at TDC Works.
 				<aside className={styles.linksIndexer}>
-					<Link to='/toolkit'>Toolkit Home</Link>
-					<Link to='find-valuation'>Startup Valuation</Link>{' '}
+					<ol>
+						{tool_routes.map((route, i) => (
+							<li>
+								<NavLink key={i} to={route.path}>
+									{route.name}
+								</NavLink>
+							</li>
+						))}
+					</ol>
 				</aside>
 			</section>
 		</>
@@ -56,7 +77,7 @@ const Toolkit = (props) => {
 			<Suspense delayMs='50' fallback={<div>Loading the cool stuff... </div>}>
 				<Router>
 					<Tools path='/' width={props.width} />
-					<Valuations path='find-valuation' width={props.width} />
+					<Valuations path='/find-valuation' width={props.width} />
 					<Page404 default />
 				</Router>
 			</Suspense>

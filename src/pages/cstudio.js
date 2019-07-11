@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 // import { Router } from '@reach/router';
 import { Formik, FieldArray, Form } from 'formik';
+import { Helmet } from 'react-helmet';
 
 // import NavLink from '../components/navLink';
 import LightInput from '../components/forms/inline_InputLight';
@@ -32,6 +33,7 @@ const StudioCreate = (props) => {
 	return (
 		<Suspense delayMs='50' fallback={<div>Loading the cool stuff... </div>}>
 			<section {...props}>What do you want to make today?</section>
+			<GenericInput />
 		</Suspense>
 	);
 };
@@ -56,6 +58,11 @@ const StudioPreview = (props) => {
 const CStudio = (props) => {
 	return (
 		<div className='studioLayout'>
+			<Helmet>
+				<title>Studio Home</title>
+				<meta name='description' content="WARN! Admin Page!! Creators' Studio" />
+				<meta name='theme-color' content='#008f68' />
+			</Helmet>
 			<StudioCreate className='studioCreator WIP' />
 			<StudioPreview className='studioPreviewer WIP2' />
 		</div>

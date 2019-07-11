@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from '@reach/router';
 import NavLink from './navLink';
 import { connect } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { Menu, MenuList, MenuButton, MenuItem, MenuLink } from '@reach/menu-button';
+// import { Menu, MenuList, MenuButton, MenuItem, MenuLink } from '@reach/menu-button';
 
 import signon from '../redux/actions/auth';
 
@@ -68,30 +67,30 @@ const AuthComp = (props) => {
 	);
 };
 
-const NavMenu = (props) => {
-	return (
-		<Menu>
-			{({ isOpen }) => (
-				<React.Fragment>
-					<MenuButton>
-						{isOpen ? 'Close' : 'Open'} <span aria-hidden='true'>▾</span>
-					</MenuButton>
-					<MenuList>
-						<MenuItem>Download</MenuItem>
-						<MenuItem>Create a Copy</MenuItem>
-						<MenuLink as={Link} to='/'>
-							Home
-						</MenuLink>
-						<hr />
-						<MenuItem>Logout</MenuItem>
-					</MenuList>
-				</React.Fragment>
-			)}
-		</Menu>
-	);
-};
+// const NavMenu = (props) => {
+// 	return (
+// 		<Menu>
+// 			{({ isOpen }) => (
+// 				<React.Fragment>
+// 					<MenuButton>
+// 						{isOpen ? 'Close' : 'Open'} <span aria-hidden='true'>▾</span>
+// 					</MenuButton>
+// 					<MenuList>
+// 						<MenuItem>Download</MenuItem>
+// 						<MenuItem>Create a Copy</MenuItem>
+// 						<MenuLink as={Link} to='/'>
+// 							Home
+// 						</MenuLink>
+// 						<hr />
+// 						<MenuItem>Logout</MenuItem>
+// 					</MenuList>
+// 				</React.Fragment>
+// 			)}
+// 		</Menu>
+// 	);
+// };
 
-NavMenu.propTypes = {};
+// NavMenu.propTypes = {};
 
 // export default NavMenu
 
@@ -114,7 +113,6 @@ const navbar = (props) => {
 					))}
 					{false && <NavLink to='dash'>Dashboard</NavLink>}
 					{!isMobile && <AuthComp user={user} />}
-					{false && <NavMenu />}
 				</nav>
 			</header>
 		</section>
