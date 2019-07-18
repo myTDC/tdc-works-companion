@@ -34,7 +34,7 @@ body {
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import url('https://fonts.googleapis.com/css?family=Muli:400,600,700,900');
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700,900');
-@import url('https://fonts.googleapis.com/css?family=Alice|Josefin+Sans:300,400,600,700');
+@import url('https://fonts.googleapis.com/css?family=Mukta|Josefin+Sans:300,400,600,700');
 
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
@@ -48,9 +48,9 @@ a:visited {
 
 .debugger {
 	background-color: antiquewhite;
-	width: 32%;
-	margin: 2rem auto;
-	padding: 2rem;
+	width: 100%;
+	margin: 4vh auto;
+	padding: 1rem;
 	text-align: start;
 }
 
@@ -63,9 +63,17 @@ a:visited {
 	color: rebeccapurple;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (min-width: 481px) {
 	html {
 		font-size: 100%;
+	}
+
+	.debugger {
+		background-color: antiquewhite;
+		width: 80%;
+		margin: 4vh auto;
+		padding: 2rem;
+		text-align: start;
 	}
 }
 
@@ -80,6 +88,21 @@ a:visited {
 	-moz-box-shadow: inset 0 -5px 0 #16df84;
 	-webkit-box-shadow: inset 0 -5px 0 #16df84;
 	box-shadow: inset 0 -3px 0 #16df84;
+}
+
+legend {
+	background-color: #000;
+	color: #fff;
+	padding: 3px 6px;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: royalblue; /* linear-gradient(#16df84, #162432); */
+	border-radius: 2px;
 }
 
 /* .highlight:after {

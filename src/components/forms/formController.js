@@ -5,6 +5,7 @@ import { Formik, Form, FastField, FieldArray } from 'formik';
 import * as yup from 'yup';
 
 import DynamicInput from './dynamicInput';
+import './dynamicForm.css';
 /**
  * Fetches the form creation data and handles the overall formik implementation including validation and submission.
  * Submission is handled based on the form context
@@ -86,6 +87,7 @@ FormController.defaultProps = {
 		formQuestions: [
 			{
 				name: `user_name`,
+				id: 'Q.1 ',
 				display: `Your Full Name`,
 				type: `text`,
 				options: null,
@@ -97,16 +99,18 @@ FormController.defaultProps = {
 			},
 			{
 				name: `age`,
+				id: 'Q.2 ',
 				display: `How old are you?`,
 				type: `number`,
 				options: null,
 				placeholder: `Eg. 21`,
 				classes: '',
-				pretext: 'You must be at least ',
+				pretext: 'I may look experienced but I am only ',
 				posttext: ' years old',
 			},
 			{
 				name: `gender`,
+				id: 'Q.3 ',
 				display: `I am a:`,
 				type: `select`,
 				options: [
@@ -121,13 +125,14 @@ FormController.defaultProps = {
 			},
 			{
 				name: `qualifications`,
+				id: 'Q.4 ',
 				display: `qualifications`,
 				type: `radiogroup`,
 				options: [
+					{ value: 'highschool', display: 'High School' },
 					{ value: 'undergraduate', display: 'Undergraduate' },
 					{ value: 'postgraduate', display: 'Postgraduate' },
 					{ value: 'phd', display: 'Ph.D.' },
-					{ value: 'highschool', display: 'High School' },
 				],
 				classes: '',
 				pretext: `What's your educational background?`,
@@ -135,6 +140,7 @@ FormController.defaultProps = {
 			},
 			{
 				name: `interests`,
+				id: 'Q.5 ',
 				display: `interests`,
 				type: `checkboxgroup`,
 				options: [
@@ -148,17 +154,17 @@ FormController.defaultProps = {
 				pretext: `What are your interests?`,
 			},
 			{
-				name: `College`,
+				name: `college`,
+				id: 'Q.6 ',
 				display: `Your College`,
 				type: `combobox`,
-				id: 'college',
 				options: [
 					{ value: 'campus marketing', display: 'Campus Marketing' },
 					{ value: 'digital marketing', display: 'Digital Marketing' },
 					{ value: 'public relations', display: 'Public Relations' },
 					{ value: 'graphics design', display: 'Graphics Design' },
-					{ value: 'web dev', display: 'Web Dev' },
-					{ value: 'mobile dev', display: 'Mobile Dev' },
+					{ value: 'mobile dev', display: 'Mobile Development' },
+					{ value: 'web dev', display: 'Web Development' },
 				],
 				placeholder: `Eg. ANDC`,
 				classes: '',
@@ -168,10 +174,11 @@ FormController.defaultProps = {
 			},
 			{
 				name: `excitement`,
+				id: 'Q.7 ',
 				display: `How excited are you? `,
 				type: `range`,
 				options: null,
-				placeholder: 50,
+				placeholder: 0,
 				min: 0,
 				max: 100,
 				step: 5,
@@ -206,7 +213,7 @@ FormController.defaultProps = {
 				.required('We would really like to know what to call you!!'),
 			qualifications: yup
 				.string()
-				.min(4, "We're sure you complete name has more than 4 letters.")
+				.min(3, "We're sure you complete name has more than 4 letters.")
 				.required('We would really like to know what to call you!!'),
 			interests: yup
 				.array()

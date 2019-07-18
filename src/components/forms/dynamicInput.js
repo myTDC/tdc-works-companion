@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getIn, useField } from 'formik';
-import { RadioGroup, Radio } from '@palmerhq/radio-group';
-import '@palmerhq/radio-group/styles.css';
+import { getIn } from 'formik';
+// import '@palmerhq/radio-group/styles.css';
 
-import './dynamicForm.css';
 /**
  * Handles the render logic for the form data as sent by the master form controller
  * uses a switch case to check input type and render components (text, textarea, email, selection, checkboxes, radiobuttons, sliders, etc) accordingly.
@@ -12,18 +10,18 @@ import './dynamicForm.css';
  * also renders any pre-text, post-text, tooltips or additional information that the user may require to successfully fill and submit the form.
  */
 
-function DRadioGroup(props) {
-	const [{ onChange, onBlur, ...field }] = useField(props.name);
-	return (
-		<RadioGroup
-			{...props}
-			{...field}
-			labelledBy={props.name}
-			onBlur={onBlur(props.name)}
-			onChange={onChange(props.name)}
-		/>
-	);
-}
+// function DRadioGroup(props) {
+// 	const [{ onChange, onBlur, ...field }] = useField(props.name);
+// 	return (
+// 		<RadioGroup
+// 			{...props}
+// 			{...field}
+// 			labelledBy={props.name}
+// 			onBlur={onBlur(props.name)}
+// 			onChange={onChange(props.name)}
+// 		/>
+// 	);
+// }
 
 const InputRenderer = (props) => {
 	const { type, field } = props;
@@ -56,29 +54,35 @@ const InputRenderer = (props) => {
 		}
 		case 'checkboxgroup': {
 			return (
-				<fieldset {...field} {...props}>
-					<legend>{field.name}</legend>
-					<div className='optionsContainer'>
-						{props.options.map((option) => (
+				<div className='optionsContainer' {...field} {...props}>
+					{props.options &&
+						props.options.map((option) => (
 							<span className='options' key={field.name + option.value}>
 								<input type='checkbox' id={field.name} name={field.name} value={option.value} />
 								<label htmlFor={option.value}>{option.display}</label>
 							</span>
 						))}
-					</div>
-				</fieldset>
+				</div>
 			);
 		}
 		case 'radiogroup': {
 			return (
-				<DRadioGroup className='optionsContainer' name={field.name} {...field} {...props}>
+				<div className='optionsContainer' name={field.name} {...field} {...props}>
 					{props.options &&
 						props.options.map((option) => (
-							<Radio className='options' value={option.value} key={option.value}>
-								{option.display}
-							</Radio>
+							<span className='options' key={field.name + option.value}>
+								<input type='radio' id={field.name} name={field.name} value={option.value} />
+								<label htmlFor={option.value}>{option.display}</label>
+							</span>
+							// <Radio
+							// 	className='options'
+							// 	onChange={field.onChange}
+							// 	value={option.value}
+							// 	key={option.value}>
+							// 	{option.display}
+							// </Radio>
 						))}
-				</DRadioGroup>
+				</div>
 			);
 		}
 		case 'range': {
@@ -86,6 +90,7 @@ const InputRenderer = (props) => {
 				<div>
 					<label htmlFor={field.name}>{props.min}</label>
 					<input
+						className='range'
 						type='range'
 						id={field.name}
 						name={field.name}
@@ -113,6 +118,8 @@ const InputRenderer = (props) => {
 						className='inline_input'
 						type='text'
 						name={field.name}
+						{...field}
+						{...props}
 						id={props.name}
 						list={props.id}
 					/>
@@ -161,20 +168,23 @@ const DynamicInput = (props) => {
 		// console.log(field.name, 'has error? :', errorMessage);
 	}
 	return (
-		<div className='inputRenderer'>
-			<span className='inline_pretext'>{props.pretext}</span>
-			<InputRenderer type={props.type} field={field} {...props} />
-			{props.posttext && (
-				<span className='inline_pretext'>
-					{props.posttext}
-					<br />
-				</span>
-			)}
-			{touched && errorMessage ? (
-				<pre className='inline_error'>
-					{errorMessage} <br />
-				</pre>
-			) : null}
+		<div className='inputContainer'>
+			<fieldset
+				className='inputRenderer'
+				style={{
+					borderColor: touched ? (errorMessage ? 'crimson' : '#16df84') : 'grey',
+					borderWidth: touched ? '2px' : '1px',
+				}}>
+				<legend className='inline_pretext'>{props.pretext}</legend>
+				<InputRenderer type={props.type} field={field} {...props} />
+				{props.posttext && (
+					<span className='inline_posttext'>
+						{props.posttext}
+						<br />
+					</span>
+				)}
+			</fieldset>
+			{touched && errorMessage ? <div className='inline_error'>⚠ {errorMessage} ⚠</div> : null}
 		</div>
 	);
 };
