@@ -82,9 +82,9 @@ const getUserData = (user) => {
 const authWithGoogle = () => {
 	console.log('Starting Authentication Process');
 	let curAuth = null;
-	return async (dispatch) => {
+	return (dispatch) => {
 		dispatch(authenticatingUser()); //
-		curAuth = await getAuthRef();
+		curAuth = getAuthRef();
 		console.log('SingedIn! ; AuthRef is: ', curAuth);
 		curAuth
 			.signInWithPopup(gProvider)

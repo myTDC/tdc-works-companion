@@ -37,7 +37,7 @@ const AuthComp = (props) => {
 			{...props}
 			role='button'
 			className='authContainer'
-			onClick={() => dispatch(signon)}
+			onClick={() => dispatch(signon())}
 			onKeyPress={() => dispatch(signon)}
 			tabIndex='0'>
 			<img
@@ -66,33 +66,6 @@ const AuthComp = (props) => {
 		</aside>
 	);
 };
-
-// const NavMenu = (props) => {
-// 	return (
-// 		<Menu>
-// 			{({ isOpen }) => (
-// 				<React.Fragment>
-// 					<MenuButton>
-// 						{isOpen ? 'Close' : 'Open'} <span aria-hidden='true'>▾</span>
-// 					</MenuButton>
-// 					<MenuList>
-// 						<MenuItem>Download</MenuItem>
-// 						<MenuItem>Create a Copy</MenuItem>
-// 						<MenuLink as={Link} to='/'>
-// 							Home
-// 						</MenuLink>
-// 						<hr />
-// 						<MenuItem>Logout</MenuItem>
-// 					</MenuList>
-// 				</React.Fragment>
-// 			)}
-// 		</Menu>
-// 	);
-// };
-
-// NavMenu.propTypes = {};
-
-// export default NavMenu
 
 const navbar = (props) => {
 	const { isMobile, user } = props;
@@ -137,5 +110,33 @@ export default connect(
 	mapStateToProps,
 	{ signon }
 )(navbar);
+
 /* <Link to='register'>Grow</Link>
 					<Link to='tdc'>TDC</Link> */
+
+// const NavMenu = (props) => {
+// 	return (
+// 		<Menu>
+// 			{({ isOpen }) => (
+// 				<React.Fragment>
+// 					<MenuButton>
+// 						{isOpen ? 'Close' : 'Open'} <span aria-hidden='true'>▾</span>
+// 					</MenuButton>
+// 					<MenuList>
+// 						<MenuItem>Download</MenuItem>
+// 						<MenuItem>Create a Copy</MenuItem>
+// 						<MenuLink as={Link} to='/'>
+// 							Home
+// 						</MenuLink>
+// 						<hr />
+// 						<MenuItem>Logout</MenuItem>
+// 					</MenuList>
+// 				</React.Fragment>
+// 			)}
+// 		</Menu>
+// 	);
+// };
+
+// NavMenu.propTypes = {};
+
+// export default NavMenu

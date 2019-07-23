@@ -27,7 +27,8 @@ const initialState = {
 
 const authReducer = createReducer(initialState, {
 	[authenticatingUser.type]: (state) => {
-		return (state.authing = true);
+		console.log('Auth Process Started');
+		state.authing = true;
 	},
 	[authenticatedUser.type]: (state, action) => {
 		state.authing = false;
