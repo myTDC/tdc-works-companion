@@ -66,6 +66,7 @@ const FormController = (props) => {
 								<br />
 								<button type='submit'>I want to learn!</button>
 								<pre className='debugger'>{JSON.stringify(formikProps, null, 4)}</pre>
+								{console.table(formikProps)}
 							</Form>
 						);
 					}}
@@ -127,7 +128,7 @@ FormController.defaultProps = {
 				name: `qualifications`,
 				id: 'Q.4 ',
 				display: `qualifications`,
-				type: `radiogroup`,
+				type: `rbg-mui`,
 				options: [
 					{ value: 'highschool', display: 'High School' },
 					{ value: 'undergraduate', display: 'Undergraduate' },
@@ -142,7 +143,8 @@ FormController.defaultProps = {
 				name: `interests`,
 				id: 'Q.5 ',
 				display: `interests`,
-				type: `checkboxgroup`,
+				type: `cbg-mui`,
+				// type: `checkboxgroup`,
 				options: [
 					{ value: 'campus marketing', display: 'Campus Marketing' },
 					{ value: 'digital marketing', display: 'Digital Marketing' },
@@ -176,8 +178,25 @@ FormController.defaultProps = {
 				name: `excitement`,
 				id: 'Q.7 ',
 				display: `How excited are you? `,
-				type: `range`,
-				options: null,
+				type: `slider-mui`,
+				options: [
+					{
+						value: 0,
+						label: '0°C',
+					},
+					{
+						value: 20,
+						label: '20°C',
+					},
+					{
+						value: 37,
+						label: '37°C',
+					},
+					{
+						value: 100,
+						label: '100°C',
+					},
+				],
 				placeholder: 0,
 				min: 0,
 				max: 100,
@@ -193,13 +212,17 @@ FormController.defaultProps = {
 			age: '',
 			gender: '',
 			qualifications: '',
-			interests: '',
+			interests: [],
 			college: '',
 			excitement: '',
 		},
 		validationScheme: {
 			user_name: yup
 				.string()
+				.matches(/^[a-zA-Z_]+( [a-zA-Z_]+)*$/, {
+					message: 'We prefer full names that only contain alphabets',
+					excludeEmptyString: true,
+				})
 				.min(4, "We're sure you complete name has more than 4 letters.")
 				.required('We would really like to know what to call you!!'),
 			age: yup
@@ -218,9 +241,14 @@ FormController.defaultProps = {
 			interests: yup
 				.array()
 				.of(yup.string().min(5))
+				.min(1, 'You must be interested in something???')
 				.required('We would really like to know what to call you!!'),
 			college: yup
 				.string()
+				.matches(/^[a-zA-Z_]+( [a-zA-Z_]+)*$/, {
+					message: 'We prefer college names that contain only alphabets',
+					excludeEmptyString: true,
+				})
 				.min(4, "We're sure you complete name has more than 4 letters.")
 				.required('We would really like to know what to call you!!'),
 			excitement: yup

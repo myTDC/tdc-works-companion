@@ -1,63 +1,71 @@
 import {
-  //AUTH_USER_SIGNIN_GOOGLE, TEST_INCREMENT
-  authenticatingUser, authenticatedUser, gotErrorAuthenticatingUser,
-  gettingUserData, gotUserExists, gotErrorCheckingUserData,
-  creatingUser, createdUser, gotErrorCreatingUser,
-} from "../actions/auth"
-import { createReducer } from "redux-starter-kit"
+	//AUTH_USER_SIGNIN_GOOGLE, TEST_INCREMENT
+	authenticatingUser,
+	authenticatedUser,
+	gotErrorAuthenticatingUser,
+	gettingUserData,
+	gotUserExists,
+	gotErrorCheckingUserData,
+	creatingUser,
+	createdUser,
+	gotErrorCreatingUser,
+} from '../actions/auth';
+import { createReducer } from 'redux-starter-kit';
 // import { timeLogger } from '../commons';
 
 const initialState = {
-  authing: false,
-  getting: false,
-  creating: false,
-  userProfileId: null,
-  user: null,
-  gotError: false,
-  error: false,
-}
+	authing: false,
+	getting: false,
+	creating: false,
+	userProfileId: null,
+	user: null,
+	gotError: false,
+	error: false,
+	role: 'visitor',
+	access: 'free',
+};
 
 const authReducer = createReducer(initialState, {
-  [authenticatingUser.type]: state => {
-    state.authing = true
-  },
-  [authenticatedUser.type]: (state, action) => {
-    state.authing = false
-    state.user = action.payload.newUser
-    state.userProfileId = action.payload.newUser.profileId
-  },
-  [gotErrorAuthenticatingUser.type]: (state, action) => {
-    state.authing = false
-    state.gotError = true
-    state.error = action.payload.error
-  },
-  [gettingUserData.type]: state => {
-    state.getting = true
-  },
-  [gotUserExists.type]: (state, action) => {
-    state.getting = false
-    // state.user = action.payload.newUser;
-    // state.userProfileId = action.payload.newUser.profileId;
-  },
-  [gotErrorCheckingUserData.type]: (state, action) => {
-    state.getting = false
-    state.gotError = true
-    state.error = action.payload.error_code
-  },
-  [creatingUser.type]: state => {
-    state.authing = true
-  },
-  [createdUser.type]: (state, action) => {
-    state.authing = false
-  },
-  [gotErrorCreatingUser.type]: (state, action) => {
-    state.authing = false
-    state.gotError = true
-    state.error = action.payload.error_code
-  },
-})
+	[authenticatingUser.type]: (state) => {
+		return (state.authing = true);
+	},
+	[authenticatedUser.type]: (state, action) => {
+		state.authing = false;
+		state.user = action.payload.newUser;
+		state.userProfileId = action.payload.newUser.profileId;
+	},
+	[gotErrorAuthenticatingUser.type]: (state, action) => {
+		state.authing = false;
+		state.gotError = true;
+		state.error = action.payload.error;
+	},
+	[gettingUserData.type]: (state) => {
+		state.getting = true;
+	},
+	[gotUserExists.type]: (state, action) => {
+		state.getting = false;
+		// state.user = action.payload.newUser;
+		// state.userProfileId = action.payload.newUser.profileId;
+	},
+	[gotErrorCheckingUserData.type]: (state, action) => {
+		state.getting = false;
+		state.gotError = true;
+		state.error = action.payload.error_code;
+	},
+	[creatingUser.type]: (state) => {
+		state.authing = true;
+	},
+	[createdUser.type]: (state, action) => {
+		state.authing = false;
+	},
+	[gotErrorCreatingUser.type]: (state, action) => {
+		state.authing = false;
+		state.gotError = true;
+		state.error = action.payload.error_code;
+	},
+});
 
-export default authReducer
+export default authReducer;
 
 // const reducer = (state = initialState, action) => {
 //   console.log('Inside Reducer')

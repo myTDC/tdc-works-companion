@@ -14,10 +14,34 @@ export const creatingUser = createAction('USER_DATA_INITIALIZING');
 export const createdUser = createAction('USER_DATA_INITIALIZED');
 export const gotErrorCreatingUser = createAction('USER_DATA_INIT_ERROR');
 
-const createUser = (user) => {
+// const setUserRoles = (user) => {
+// 	const userWithRoles = { ...user, ...{} };
+// 	return userWithRoles;
+// };
+
+// const getUserRoles = (user) => {
+// 	const rights = [];
+// 	rights.some((right) => user.rights.includes(right));
+// 	return user;
+// };
+
+const setUserAccess = (user) => {
+	const userWithAccess = { ...user, ...{ role: 'authenticated', access: 'regsitered' } };
+	console.log('Access Specified User is', userWithAccess);
+	return userWithAccess;
+};
+
+// const getUserAccess = (user) => {
+// 	const userWithAccess = null;
+// 	return [user, userWithAccess];
+// };
+
+const createUser = (newUser) => {
 	return async (dispatch) => {
 		dispatch(creatingUser());
-		console.log("User Doesn't Exist. Creating User with Data: ", user, ' to ', usersColRef);
+		//TODO: add user roles and accesses
+		const user = setUserAccess(newUser);
+		console.log("User Doesn't Exist. Creating User with Data: ", user, ' at ', usersColRef);
 		usersColRef
 			.add(user)
 			.then((docRef) => {
@@ -56,9 +80,13 @@ const getUserData = (user) => {
 };
 
 const authWithGoogle = () => {
+	console.log('Starting Authentication Process');
+	let curAuth = null;
 	return async (dispatch) => {
-		dispatch(authenticatingUser()); // console.log('SingedIn! ; AuthRef is: ', getAuthRef())
-		await getAuthRef()
+		dispatch(authenticatingUser()); //
+		curAuth = await getAuthRef();
+		console.log('SingedIn! ; AuthRef is: ', curAuth);
+		curAuth
 			.signInWithPopup(gProvider)
 			.then((result) => {
 				// console.log("SingedIn! ; Response is: ", result) // console.log("SingedIn! ; User Info: ", result.user)
@@ -75,6 +103,7 @@ const authWithGoogle = () => {
 					photoUrl: result.user.photoURL,
 					emailVerified: result.user.emailVerified,
 				};
+
 				const userSessionExtras = {
 					uid: result.user.uid,
 					isAnonymous: result.user.isAnonymous,
@@ -82,6 +111,7 @@ const authWithGoogle = () => {
 					refToken: result.user.refreshToken,
 					token: result.credential.accessToken, // This gives you a Google Access Token. You can use it to access the Google API.
 				};
+
 				console.log('SingedIn!; User is: ', user); //const user = getAuthRef().currentUser
 				batch(() => {
 					dispatch(authenticatedUser({ newUser: user, sessionStuff: userSessionExtras })); //dispatch(authSuccessful(user))

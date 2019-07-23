@@ -1,8 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getIn } from 'formik';
-// import '@palmerhq/radio-group/styles.css';
+import {
+	//withStyles,
+	makeStyles,
+} from '@material-ui/core/styles';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormLabel from '@material-ui/core/FormLabel';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import Slider from '@material-ui/core/Slider';
 
+
+import ErrorBoundary from '../ErrorBoundary'
 /**
  * Handles the render logic for the form data as sent by the master form controller
  * uses a switch case to check input type and render components (text, textarea, email, selection, checkboxes, radiobuttons, sliders, etc) accordingly.
@@ -23,8 +37,30 @@ import { getIn } from 'formik';
 // 	);
 // }
 
+const useStyles = makeStyles((theme) => ({
+	root: {
+		display: 'flex',
+	},
+	formControl: {
+		margin: theme.spacing(3),
+	},
+	formLabel: {
+		backgroundColor: '#fff',
+	},
+	group: {
+		margin: theme.spacing(1, 0),
+	},
+}));
+
+// const MyCheckboxGroup = (props) => {
+// 	const { field } = props;
+// 	const classes = useStyles();
+
+// };
+
 const InputRenderer = (props) => {
 	const { type, field } = props;
+	const classes = useStyles();
 
 	switch (type) {
 		case 'text': {
@@ -142,6 +178,109 @@ const InputRenderer = (props) => {
 		case 'textarea': {
 			return <textarea className='inline_input' {...props} {...field} />;
 		}
+
+		case 'rbg-mui': {
+			return (
+				<FormControl component='fieldset' className={classes.formControl}>
+					<FormLabel component='legend' className={classes.formLabel}>
+						{props.display}
+					</FormLabel>
+					<RadioGroup
+						aria-label={field.display}
+						name={field.name}
+						className={classes.group}
+						value={field.value}
+						{...props}
+						{...field}>
+						{props.options &&
+							props.options.map((option) => (
+								<FormControlLabel
+									key={field.name + option.value}
+									value={option.value}
+									control={<Radio name={field.name} />}
+									label={option.display}
+								/>
+							))}
+					</RadioGroup>
+				</FormControl>
+			);
+		}
+		case 'cbg-mui': {
+			const handleClicked = (optionName, checked) => {
+				const {
+					form: { setFieldValue, setFieldTouched },
+					field: { value },
+				} = props;
+				// console.log(props.form);
+				// event.preventDefault();
+				if (checked) {
+					// console.log('Previosuly checked option: ', optionName, ' was unchecked in: ', field.name);
+					setFieldValue(field.name, value.filter((x) => x !== optionName));
+				} else {
+					// console.log('Setting field value with option: "', optionName, '" in: ', field.name);
+					// let newValues = [...value, optionName];
+					// props.form.values.interests.push(optionName);
+					// console.log('New Values are: ', newValues);
+					setFieldValue(field.name, [...value, optionName]);
+					setFieldTouched(field.name);
+					// console.log('field ', field.name, 'had its values changed to: ', field.value);
+				}
+				// console.log('Form has the following values: ', props.form.values);
+			};
+
+			return (
+				<FormControl component='fieldset' className={classes.formControl}>
+					<FormLabel component='legend' className={classes.formLabel}>
+						{props.display}
+					</FormLabel>
+					<FormGroup name={field.name}>
+						{/* {console.log('Field has the following stuff: ', props.field)} */}
+						{/* {console.log('Field has the following values: ', props.field.value)} */}
+						{props.options &&
+							props.options.map((option) => {
+								let hasValue = option.value;
+								let isChecked = field.value.includes(hasValue);
+
+								return (
+									<FormControlLabel
+										key={option.value}
+										control={
+											<Checkbox
+												id={option.value}
+												value={option.value}
+												checked={isChecked}
+												onChange={() => handleClicked(hasValue, isChecked)}
+												// onClick={() => handleClicked(hasValue, isChecked)}
+											/>
+										}
+										label={option.display}
+									/>
+								);
+							})}
+					</FormGroup>
+					<FormHelperText>Be careful</FormHelperText>
+				</FormControl>
+			);
+		}
+
+		case 'slider-mui': {
+			return (
+				<ErrorBoundary>
+					<Slider
+					name={field.name}
+					id={field.name}
+					defaultValue={props.placeholder}
+					aria-labelledby='discrete-slider-always'
+					step={props.step}
+					marks={props.options}
+					valueLabelDisplay='on'
+					// onChange={field.onChange}
+					{...field}
+				/>
+				</ErrorBoundary>
+			);
+		}
+
 		default: {
 			return (
 				<>

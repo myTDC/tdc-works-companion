@@ -100,6 +100,10 @@ legend {
 	width: 8px;
 }
 
+.bgWhiteSmoke {
+	background-color: #f5f5f5;
+}
+
 ::-webkit-scrollbar-thumb {
 	background: royalblue; /* linear-gradient(#16df84, #162432); */
 	border-radius: 2px;
