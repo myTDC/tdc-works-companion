@@ -27,18 +27,15 @@ import { routes } from '../App';
 // }
 
 const AuthComp = (props) => {
-	const {
-		//user,
-		join,
-	} = props;
+	const { user } = props;
 	const dispatch = useDispatch();
-	return /*user*/ true ? (
+	return /*true*/ user ? (
 		<aside
 			{...props}
 			role='button'
 			className='authContainer'
 			onClick={() => dispatch(signon())}
-			onKeyPress={() => dispatch(signon)}
+			onKeyPress={() => dispatch(signon())}
 			tabIndex='0'>
 			<img
 				className='avatar'
@@ -47,14 +44,15 @@ const AuthComp = (props) => {
 				loading='lazy'
 			/>
 			<span className='authText'>profile</span>
+			<NavLink to='./Logout'> X </NavLink>
 		</aside>
 	) : (
 		<aside
 			{...props}
 			role='button'
 			className='authContainer'
-			onClick={join}
-			onKeyPress={join}
+			onClick={() => dispatch(signon())}
+			onKeyPress={() => dispatch(signon())}
 			tabIndex='0'>
 			<img
 				className='avatar'
@@ -93,23 +91,25 @@ const navbar = (props) => {
 };
 
 navbar.propTypes = {
-	user: PropTypes.string,
+	user: PropTypes.object,
 };
 
 navbar.defaultProps = {
 	user: null,
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+	user: state.auth.user,
+});
+
+export default connect(
+	mapStateToProps
+	// { signon }
+)(navbar);
 
 // const mapDispatchToProps = (dispatch) => ({
 // 	join: () => dispatch(signon()),
 // });
-
-export default connect(
-	mapStateToProps,
-	{ signon }
-)(navbar);
 
 /* <Link to='register'>Grow</Link>
 					<Link to='tdc'>TDC</Link> */
