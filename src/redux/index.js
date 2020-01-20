@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from 'redux-starter-kit';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 import throttle from 'lodash/throttle';
 import auth from './reducers/auth';
@@ -15,7 +15,10 @@ export const loadState = () => {
 		}
 		return JSON.parse(serializedState);
 	} catch (err) {
-		console.log('[Red/Index] -> [loadState()] Error Getting Serilaized State', err);
+		console.log(
+			'[Red/Index] -> [loadState()] Error Getting Serilaized State',
+			err
+		);
 		return undefined;
 	}
 };
@@ -25,7 +28,10 @@ export const saveState = (state) => {
 		const serializedState = JSON.stringify(state);
 		localStorage.setItem('storedState', serializedState);
 	} catch (err) {
-		console.log('[Red/Index] -> [setState()] Error Setting Serilaized State', err);
+		console.log(
+			'[Red/Index] -> [setState()] Error Setting Serilaized State',
+			err
+		);
 	}
 };
 

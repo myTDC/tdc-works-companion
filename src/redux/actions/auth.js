@@ -1,5 +1,5 @@
 import { batch } from 'react-redux';
-import { createAction } from 'redux-starter-kit';
+import { createAction } from '@reduxjs/toolkit';
 import { getAuthRef, gProvider, usersColRef } from '../../services/fb';
 
 export const authenticatingUser = createAction('USER_AUTH_INIT');
@@ -26,7 +26,10 @@ export const gotErrorCreatingUser = createAction('USER_DATA_INIT_ERROR');
 // };
 
 const setUserAccess = (user) => {
-	const userWithAccess = { ...user, ...{ role: 'authenticated', access: 'regsitered' } };
+	const userWithAccess = {
+		...user,
+		...{ role: 'authenticated', access: 'regsitered' },
+	};
 	console.log('Access Specified User is', userWithAccess);
 	return userWithAccess;
 };
@@ -41,7 +44,12 @@ const createUser = (newUser) => {
 		dispatch(creatingUser());
 		//TODO: add user roles and accesses
 		const user = setUserAccess(newUser);
-		console.log("User Doesn't Exist. Creating User with Data: ", user, ' at ', usersColRef);
+		console.log(
+			"User Doesn't Exist. Creating User with Data: ",
+			user,
+			' at ',
+			usersColRef
+		);
 		usersColRef
 			.add(user)
 			.then((docRef) => {
@@ -65,7 +73,12 @@ const getUserData = (user) => {
 				if (querySnapshot) {
 					querySnapshot.forEach((doc) => {
 						const incomingData = doc.data();
-						console.log('User Exists with id: ', doc.id, ' & has data: ', incomingData);
+						console.log(
+							'User Exists with id: ',
+							doc.id,
+							' & has data: ',
+							incomingData
+						);
 						dispatch(gotUserExists({ user: incomingData }));
 					});
 				} else {
@@ -114,7 +127,12 @@ const authWithGoogle = () => {
 
 				console.log('SingedIn!; User is: ', user); //const user = getAuthRef().currentUser
 				batch(() => {
-					dispatch(authenticatedUser({ newUser: user, sessionStuff: userSessionExtras })); //dispatch(authSuccessful(user))
+					dispatch(
+						authenticatedUser({
+							newUser: user,
+							sessionStuff: userSessionExtras,
+						})
+					); //dispatch(authSuccessful(user))
 					dispatch(getUserData(user)); //check user exists? getData:createUser
 				});
 			})

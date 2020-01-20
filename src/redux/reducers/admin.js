@@ -1,4 +1,4 @@
-import { createReducer } from "redux-starter-kit";
+import { createReducer } from '@reduxjs/toolkit';
 import {
 	gettingDataWorksV1,
 	gotDataWorksV1,
@@ -7,7 +7,7 @@ import {
 	setDataWorksV1,
 	gotErrorSettingDataWorksV1,
 	setSelectedWork,
-} from "../actions/admin";
+} from '../actions/admin';
 
 const initialState = {
 	workshops: null,
@@ -16,11 +16,11 @@ const initialState = {
 	error: false,
 	error_Code: null,
 	selected: null,
-	selected_Id: "wv1_001",
+	selected_Id: 'wv1_001',
 };
 
 const adminReducer = createReducer(initialState, {
-	[gettingDataWorksV1.type]: state => {
+	[gettingDataWorksV1.type]: (state) => {
 		state.fetching = true;
 	},
 	[gotDataWorksV1.type]: (state, action) => {
@@ -32,10 +32,10 @@ const adminReducer = createReducer(initialState, {
 		state.fetching = false;
 		state.error_Code = action.payload.error_code;
 	},
-	[settingDataWorksV1.type]: state => {
+	[settingDataWorksV1.type]: (state) => {
 		state.adding = true;
 	},
-	[setDataWorksV1.type]: state => {
+	[setDataWorksV1.type]: (state) => {
 		state.adding = false;
 	},
 	[gotErrorSettingDataWorksV1.type]: (state, action) => {
@@ -47,7 +47,7 @@ const adminReducer = createReducer(initialState, {
 		state.selected_Id = action.payload.selectedID;
 		// let selectWS = ;
 		state.selected = {
-			...state.workshops.filter(works => works.id === state.selected_Id)[0],
+			...state.workshops.filter((works) => works.id === state.selected_Id)[0],
 		};
 	},
 });

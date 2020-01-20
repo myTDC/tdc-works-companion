@@ -2,8 +2,6 @@
 	"prettier.useTabs": true,
 	"prettier.trailingComma": "es5",
 	"prettier.jsxBracketSameLine": true,
-	"prettier.eslintIntegration": true,
-	"prettier.stylelintIntegration": true,
 	"eslint.autoFixOnSave": false,
 	"editor.formatOnSave": true
 }

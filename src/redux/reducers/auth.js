@@ -10,7 +10,7 @@ import {
 	createdUser,
 	gotErrorCreatingUser,
 } from '../actions/auth';
-import { createReducer } from 'redux-starter-kit';
+import { createReducer } from '@reduxjs/toolkit';
 // import { timeLogger } from '../commons';
 
 const initialState = {

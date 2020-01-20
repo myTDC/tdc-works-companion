@@ -5,24 +5,24 @@
 	display: grid;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	grid-template-columns: calc(100%);
-	grid-template-rows: repeat(12, minmax(500px, 100%));
+	/* grid-template-rows: repeat(12, minmax(500px, 100%)); */
 	column-gap: 0;
 	row-gap: 0;
 	place-items: center;
 	grid-template-areas:
-	'learnHeroDisplay'
-	'learnHeroText'
-	'learnBenefitsDisplay'
-	'learnBenefitsText'
-	'learnPowers'
-	'learnPowers'
-	'learnRegistration'
-	'learnRegistration'
-	'learnCollabs'
-	'learnCollabDisplay'
-	'learnEventsDisplay'
-	'learnEventsDesc'
-	'homeFooter';
+		'learnHeroDisplay'
+		'learnHeroText'
+		'learnBenefitsDisplay'
+		'learnBenefitsText'
+		'learnPowers'
+		'learnPowers'
+		'learnRegistration'
+		'learnRegistration'
+		'learnCollabs'
+		'learnCollabDisplay'
+		'learnEventsDisplay'
+		'learnEventsDesc'
+		'homeFooter';
 	text-align: center;
 	background-color: white;
 }
@@ -254,14 +254,14 @@
 		max-width: 1200px;
 		margin: 8px auto 0;
 		grid-template-columns: repeat(2, minmax(50%, calc(50%)));
-		grid-template-rows: repeat(6, minmax(88vh, calc(88vh)));
+		/* grid-template-rows: repeat(6, minmax(88vh, calc(88vh))); */
 		grid-template-areas:
-		'learnHeroText learnHeroDisplay'
-		'learnBenefitsDisplay learnBenefitsText'
-		'learnPowers learnPowers'
-		'learnRegistration learnRegistration'
-		'learnEventsDesc learnEventsDisplay'
-		'learnCollabs learnCollabDisplay';
+			'learnHeroText learnHeroDisplay'
+			'learnBenefitsDisplay learnBenefitsText'
+			'learnPowers learnPowers'
+			'learnRegistration learnRegistration'
+			'learnEventsDesc learnEventsDisplay'
+			'learnCollabs learnCollabDisplay';
 		text-align: start;
 
 		/* row-gap: 8vh; */
