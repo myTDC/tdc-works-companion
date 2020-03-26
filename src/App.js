@@ -44,7 +44,10 @@ const App = () => {
 		<div className='App'>
 			<Helmet>
 				<title>Works Home</title>
-				<meta name='description' content='Homepage of the companion App for TDC Workshops' />
+				<meta
+					name='description'
+					content='Homepage of the companion App for TDC Workshops'
+				/>
 				<meta name='theme-color' content='#008f68' />
 			</Helmet>
 			<Navbar isMobile={isMobile} />
@@ -52,9 +55,9 @@ const App = () => {
 				<Router className='AppContainer'>
 					<Landing path={routes.Home.path} />
 					<Learn path={routes.Learn.path} />
-					{/* <Learn path='/works' />
+					<Learn path='/works' />
 					<Learn path='/learn' />
-					<Build path={routes.Build.path} />
+					{/* <Build path={routes.Build.path} /> */}
 					<Build path='/build' />
 					<Dashboard path={routes.Dash.path} />
 					<Dashboard path='/me/*' />
@@ -63,7 +66,7 @@ const App = () => {
 					<Toolkit path='/toolkit/*' width={windWidth} isMobile={isMobile} />
 					<Feedback path='/feedback/*' />
 					<Studio path={routes.Studio.path} />
-					<GenericForm path='collab/:id/:id' /> */}
+					<GenericForm path='collab/:id/:id' />
 					<Page404 default />
 				</Router>
 			</Suspense>
@@ -87,7 +90,9 @@ Header.propTypes = {
 };
 
 const Loader = ({ children }) => (
-	<Suspense delayMs={2000} fallback={<p>Loading Component. Sorry for the wait!</p>}>
+	<Suspense
+		delayMs={2000}
+		fallback={<p>Loading Component. Sorry for the wait!</p>}>
 		{children}
 	</Suspense>
 );

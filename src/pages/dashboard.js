@@ -1,4 +1,5 @@
 import React, { lazy, Suspense } from 'react';
+import { Helmet } from 'react-helmet';
 import '../styles/dash.css';
 
 const Profiler = lazy(() => import('../components/dash/profiler'));
@@ -28,6 +29,14 @@ ToolsView.propTypes = {};
 const Dashboard = (props) => {
 	return (
 		<div className='dashContainer'>
+			<Helmet>
+				<title>Works Dashboard</title>
+				<meta
+					name='description'
+					content='User Dashboard of the companion App for TDC Workshops'
+				/>
+				<meta name='theme-color' content='#008f68' />
+			</Helmet>
 			<Suspense delayMs='500' fallback={<div>Loading the cool stuff... </div>}>
 				<Profiler />
 				<Works />
